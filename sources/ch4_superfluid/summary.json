@@ -1,0 +1,122 @@
+[
+  {
+    "label": "superfluid_host_proxy",
+    "address": "0x3E14dC1b13c488a8d5D310918780c983bD5982E7",
+    "folder": "sources/ch4_superfluid/0x3e14dc1b13c488a8d5d310918780c983bd5982e7_superfluid_host_proxy",
+    "contract_name": "UUPSProxy",
+    "proxy": "1",
+    "implementation": "0x372b31667c9ae399ff4e57c5ee0c500386681a93",
+    "source_file_count": 3,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "superfluid_host_proxy_implementation",
+    "address": "0x372b31667c9ae399ff4e57c5ee0c500386681a93",
+    "folder": "sources/ch4_superfluid/0x372b31667c9ae399ff4e57c5ee0c500386681a93_superfluid_host_proxy_implementation",
+    "contract_name": "Superfluid",
+    "proxy": "0",
+    "implementation": "",
+    "source_file_count": 62,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "ida",
+    "address": "0xB0aABBA4B2783A72C52956CDEF62d438ecA2d7a1",
+    "folder": "sources/ch4_superfluid/0xb0aabba4b2783a72c52956cdef62d438eca2d7a1_ida",
+    "contract_name": "UUPSProxy",
+    "proxy": "1",
+    "implementation": "0x86e8ac788e9997b4e0e43a4c8fb12f69ad4bacbf",
+    "source_file_count": 3,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "ida_implementation",
+    "address": "0x86e8ac788e9997b4e0e43a4c8fb12f69ad4bacbf",
+    "folder": "sources/ch4_superfluid/0x86e8ac788e9997b4e0e43a4c8fb12f69ad4bacbf_ida_implementation",
+    "contract_name": "InstantDistributionAgreementV1",
+    "proxy": "0",
+    "implementation": "",
+    "source_file_count": 32,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "usdcx",
+    "address": "0xCAa7349CEA390F89641fe306D93591f87595dc1F",
+    "folder": "sources/ch4_superfluid/0xcaa7349cea390f89641fe306d93591f87595dc1f_usdcx",
+    "contract_name": "UUPSProxy",
+    "proxy": "1",
+    "implementation": "0xfd83982ee75892781242141ee19e1b42428b8220",
+    "source_file_count": 3,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "maticx",
+    "address": "0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3",
+    "folder": "sources/ch4_superfluid/0x3ad736904e9e65189c3000c7dd2c8ac8bb7cd4e3_maticx",
+    "contract_name": "SETHProxy",
+    "proxy": "1",
+    "implementation": "0xfd83982ee75892781242141ee19e1b42428b8220",
+    "source_file_count": 17,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "daix",
+    "address": "0x1305F6B6Df9Dc47159D12Eb7aC2804d4A33173c2",
+    "folder": "sources/ch4_superfluid/0x1305f6b6df9dc47159d12eb7ac2804d4a33173c2_daix",
+    "contract_name": "UUPSProxy",
+    "proxy": "1",
+    "implementation": "0xfd83982ee75892781242141ee19e1b42428b8220",
+    "source_file_count": 3,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "ethx",
+    "address": "0x27e1e4E6BC79D93032abef01025811B7E4727e85",
+    "folder": "sources/ch4_superfluid/0x27e1e4e6bc79d93032abef01025811b7e4727e85_ethx",
+    "contract_name": "UUPSProxy",
+    "proxy": "1",
+    "implementation": "0xfd83982ee75892781242141ee19e1b42428b8220",
+    "source_file_count": 3,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "wbtcx",
+    "address": "0x4086eBf75233e8492F1BCDa41C7f2A8288c2fb92",
+    "folder": "sources/ch4_superfluid/0x4086ebf75233e8492f1bcda41c7f2a8288c2fb92_wbtcx",
+    "contract_name": "UUPSProxy",
+    "proxy": "1",
+    "implementation": "0xfd83982ee75892781242141ee19e1b42428b8220",
+    "source_file_count": 3,
+    "source_format": "solidity-standard-json"
+  },
+  {
+    "label": "usdc_polygon",
+    "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+    "folder": "sources/ch4_superfluid/0x2791bca1f2de4661ed88a30c99a7a9449aa84174_usdc_polygon",
+    "contract_name": "UChildERC20Proxy",
+    "proxy": "1",
+    "implementation": "0xdd9185db084f5c4fff3b4f70e7ba62123b812226",
+    "source_file_count": 1,
+    "source_format": "single-file"
+  },
+  {
+    "label": "wmatic",
+    "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+    "folder": "sources/ch4_superfluid/0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270_wmatic",
+    "contract_name": "WMATIC",
+    "proxy": "0",
+    "implementation": "",
+    "source_file_count": 1,
+    "source_format": "single-file"
+  },
+  {
+    "label": "quickswap_v2_router",
+    "address": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+    "folder": "sources/ch4_superfluid/0xa5e0829caced8ffdd4de3c43696c57f7d7a678ff_quickswap_v2_router",
+    "contract_name": "UniswapV2Router02",
+    "proxy": "0",
+    "implementation": "",
+    "source_file_count": 1,
+    "source_format": "single-file"
+  }
+]

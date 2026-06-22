@@ -1,0 +1,15 @@
+{
+  "factory": "0xA943eA143cd7E79806d670f4a7cf08F8922a454F",
+  "wbnb": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+  "pancake_router_v2": "0x10ED43C718714eb63d5aA57B78B54704E256024E",
+  "attacker_eoa": "0xc943edb4bb4439d65b81f2f60bc698411e910b14",
+  "uranium_router_candidate_no_code": "0x80C8DD39Fe0a93d2290dA3a18d5226F04FC0B60D",
+  "pair_wbnb_busd": "0x9B9baD4c6513E0fF3fB77c739359D59601c7cAfF",
+  "pair_eth_wbnb": "0x2aC639c4016aCe2906Dc04657Aaa58Fbb2a74728",
+  "pair_btcb_wbnb": "0x04536Fb62db86cCF3C7b9b9dDd6dc10feDc92148",
+  "pair_u92_wbnb": "0xdD0C4a96A43b36d91F4FEdf83489B954C287886A",
+  "pair_usdt_busd": "0x0fBb9456E929F66853973BA12109D9569D2D4966",
+  "pair_ada_busd": "0x367e4273cEF6Fd64d41EA806A588a7A11525181F",
+  "pair_u92_busd": "0xA08c4571b395f81fBd3755d44eaf9a25C9399a4a",
+  "pair_dot_busd": "0x38A3b2c9d503046d3c734528c65C34C161e80344"
+}

@@ -1,0 +1,22 @@
+{
+  "challenge": "ch3_feirari",
+  "state": "exploited",
+  "current_attempt": 54,
+  "balance_delta_wei": "10000000000000000000",
+  "last_update": "2026-04-21T00:19:12Z",
+  "needs_human": false,
+  "active_hypothesis": "From the live post-replay head at block 14684704, the Saddle sUSD metapool remains mispriced for exactly three additional 1500000 DAI round-trips: buy sUSD on Curve, swap sUSD -> saddleUSD-V2 on Saddle, swap back to DAI, and convert the recovered DAI profit to ETH. After those three passes, the post-state no longer supports a profitable fourth pass even when the trade size is tuned down to 100000 and 5000 DAI.",
+  "dead_ends": [
+    "Pool 3 (Rari DAO Fuse Pool R4 Community) still returns exitMarket code 14 during the naive callback path, so the vanilla cross-function reentrancy branch is closed there even though the later safe-borrow variant works.",
+    "Pool 72 same-market ETH collateral reentrancy is a dead end on this fork; both the direct exitMarket path and the cToken-transfer variant bubble up doTransferOut failed on the reset snapshot.",
+    "The non-reset live fork was already exhausted for profitable CEther drains; continuing without reset would only burn gas on 0/1-wei residual cash and whitelist-blocked branches.",
+    "Attempt 40 Nomad bridge replay is a dead end on the current fork: confirmAt[0x00]=1 is not sufficient because Replica.process(message) still checks messages[hash] == Proven, historical successful Nomad messages are unproven here, and historical proof roots are not acceptable on this snapshot.",
+    "Attempt 41 Alpha Homora / Iron Bank credit-line extraction is a dead end on the current fork: addLiquidityWMasterChef only refunds leftover WETH dust as ETH to EXECUTOR(), WMasterChef collateral does not count pending SUSHI in its rate, and trying to amplify the refund path by over-borrowing WETH reverts with insufficient collateral.",
+    "Attempts 41-45 show the requested Iron Bank donation family is dead on this snapshot: low-float cy* markets are mint-paused, direct donations into the low-float i* markets do not change getCash() / exchange rate / liquidity, and the conservative Alpha Homora Sushi spell path opens a normal position with zero WETH / USDC leakage to the EOA.",
+    "Attempt 46 shows the requested Pool 8 multi-asset callback branch is dead on this snapshot: after seeding fETH-8 above the 1 ETH minimum, reentering from fETH.borrow() into fFEI.borrow() reverts re-entered across assets, no CErc20 debt is created, and the branch cannot reach the proposed stablecoin drain.",
+    "Attempt 47 confirms the remaining Alpha Homora WETH-only / close-path / callback family is dead on this snapshot: the position opens and closes normally, contract-mediated execution still reverts not eoa, and a fresh WETH/fake-token Sushi pair is not cached or whitelisted by the spell.",
+    "Pool 6 (Tetranode) remains non-broadcastable on the reset snapshot: f6-ETH cash stayed at 1790747145744033915079 wei, borrowGuardianPaused(f6-ETH) stayed true, and the prior redeem/cross-asset probes did not surface a permissionless path to extract third-party ETH.",
+    "Attempt 52 disproves the requested Pool 8 sequential stable-borrow extension on the reset fork: after normal top-level fFEI-8 and fLUSD-8 borrows, direct exitMarket(fDAI-8) already returns error code 14, and the later fETH-8 callback returns the same code 14. Hiding only the CEther debt is not enough to free the DAI collateral."
+  ],
+  "notes": "Attempt53 reset ch3_feirari back to block 14684686 and replayed the archived v37 bundle only: the 16-tx reset-state drain plus the proven R4 and Badger DAI safe-borrow follow-up broadcasts. The real live pre-Saddle head for Attempt54 was block 14684704 with nonce 20 and balance 6980224477193020917881 wei. Attempt54 then executed three additional 1500000 DAI Saddle metapool round-trips on the live head and finished at balance 7245850451759538193160 wei with actual_delta_wei 265625974566517275279, nonce 26, and post-state metapool balances sUSD=131714495251581794958430 and saddleUSD-V2=980384648830429507549076. The live tune postflight is challenges/ch3_feirari/runs/tune_1776695974_postflight.json. Archived live log: challenges/ch3_feirari/exploits/successful/tune_1776695974_live_saddle_sweep_v1_live_3pass_saddle_metapool_sweep_to_exhaustion.log."
+}

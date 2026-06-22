@@ -1,0 +1,31 @@
+{
+  "abi_entries": 9,
+  "address": "0xbb025d470162cc5ea24daf7d4566064ee7f5f111",
+  "compiler_type": "solc-m",
+  "compiler_version": "v0.5.17+commit.d19bba13",
+  "constructor_arguments": null,
+  "contract_file_name": "CEtherDelegator.sol",
+  "contract_name": "CEtherDelegator",
+  "derived_from_proxy": null,
+  "evm_version": "Default",
+  "label": "fETH_CEther",
+  "libraries": {},
+  "license_type": "BSD-3-Clause",
+  "optimizer_enabled": true,
+  "optimizer_runs": 200,
+  "primary_target": true,
+  "proxy": true,
+  "proxy_implementation": "0xbdaddc6a1321ed458b53ab9e51dc0de8dba78d43",
+  "similar_match": "0x97fe54066fbb0550fe133aac0970618485133552",
+  "source_file_count": 5,
+  "source_files": [
+    "src/CEtherDelegator.sol",
+    "src/CTokenInterfaces.sol",
+    "src/ComptrollerInterface.sol",
+    "src/IFuseFeeDistributor.sol",
+    "src/InterestRateModel.sol"
+  ],
+  "source_format": "file_map",
+  "swarm_source": "bzzr://b99d1aafe9bb09558f3b40fd7492599b82ceb08f976edfc1123d08f376d91ebd",
+  "verified": true
+}

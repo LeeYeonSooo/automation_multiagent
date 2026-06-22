@@ -1,0 +1,17 @@
+[profile.default]
+src = "exploit"
+test = "poc"
+out = "out"
+cache_path = "cache"
+solc_version = "0.8.23"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+fs_permissions = [{ access = "read-write", path = "./" }]
+
+[rpc_endpoints]
+ch6 = "${RPC_CH6_SUPERFLUID_V21}"
+
+[fmt]
+line_length = 120
+tab_width = 4

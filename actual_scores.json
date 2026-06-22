@@ -1,0 +1,59 @@
+{
+  "ch1_uranium": {
+    "score": 10000.0,
+    "max_pts": 10000,
+    "potential": 0.0,
+    "leader": "us",
+    "leader_uuid": "e14b0253c2590606a22581b711e849f5f6d1c69d7fee0a9060cede0965cb2f60",
+    "leader_score": 10000.0,
+    "gap_to_leader": 0.0,
+    "note": ""
+  },
+  "ch2_harvest": {
+    "score": 5712.52,
+    "max_pts": 10000,
+    "potential": 4287.48,
+    "leader": "d7c4d471236b...",
+    "leader_uuid": "d7c4d471236bed172f0fcdea030e864f822cf7ade0af015e98fa8310d031335c",
+    "leader_score": 10000.0,
+    "gap_to_leader": 4287.48,
+    "note": ""
+  },
+  "ch3_feirari": {
+    "score": 3836.5,
+    "max_pts": 10000,
+    "potential": 6163.5,
+    "leader": "f06ad1117aee...",
+    "leader_uuid": "f06ad1117aeea1d4f5d618f42925b6cf5469a5f5453408e75b0e248a77e5ed5a",
+    "leader_score": 10000.0,
+    "gap_to_leader": 6163.5,
+    "note": ""
+  },
+  "ch4_superfluid": {
+    "score": 14985.29,
+    "max_pts": 15000,
+    "potential": 14.71,
+    "leader": "3714e4401820...",
+    "leader_uuid": "3714e4401820ae8c45e40294f0c1a5da807bce584318a64ea5a6b93de90fb92f",
+    "leader_score": 15000.0,
+    "gap_to_leader": 14.71,
+    "note": ""
+  },
+  "ch5_superfluid_v2": {
+    "score": 24241.52,
+    "max_pts": 25000,
+    "potential": 758.48,
+    "leader": "e449c8531708...",
+    "leader_uuid": "e449c85317082843a099fead96b625ef36d7d8b7d0da7084a3a6bed82788bc80",
+    "leader_score": 24310.04,
+    "gap_to_leader": 68.52,
+    "note": ""
+  },
+  "_total_us": 58775.83,
+  "_total_leader": 60997.78,
+  "_total_leader_uuid": "e449c85317082843a099fead96b625ef36d7d8b7d0da7084a3a6bed82788bc80",
+  "_we_are_total_leader": false,
+  "_total_gap_to_leader": 2221.95,
+  "_last_updated": "2026-04-21T00:19:13Z",
+  "_last_updated_by": "poll_scoreboard.py"
+}

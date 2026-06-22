@@ -1,0 +1,31 @@
+{
+  "abi_entries": 9,
+  "address": "0x7e9ce3caa9910cc048590801e64174957ed41d43",
+  "compiler_type": "solc-m",
+  "compiler_version": "v0.5.17+commit.d19bba13",
+  "constructor_arguments": null,
+  "contract_file_name": "CErc20Delegator.sol",
+  "contract_name": "CErc20Delegator",
+  "derived_from_proxy": null,
+  "evm_version": "Default",
+  "label": "fDAI",
+  "libraries": {},
+  "license_type": "BSD-3-Clause",
+  "optimizer_enabled": true,
+  "optimizer_runs": 200,
+  "primary_target": true,
+  "proxy": true,
+  "proxy_implementation": "0x67db14e73c2dce786b5bbbfa4d010deab4bbfcf9",
+  "similar_match": "0x67130c1c1400f425179c134b2c6da1c1eaf2cd91",
+  "source_file_count": 5,
+  "source_files": [
+    "src/CErc20Delegator.sol",
+    "src/CTokenInterfaces.sol",
+    "src/ComptrollerInterface.sol",
+    "src/IFuseFeeDistributor.sol",
+    "src/InterestRateModel.sol"
+  ],
+  "source_format": "file_map",
+  "swarm_source": "bzzr://3c5dd39c6cdb77d0c6fc773130109b6d43ee6f47b09206c3d819f2edc3a74a32",
+  "verified": true
+}

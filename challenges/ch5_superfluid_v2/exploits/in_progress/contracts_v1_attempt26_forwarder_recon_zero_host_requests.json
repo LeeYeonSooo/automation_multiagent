@@ -1,0 +1,117 @@
+{
+  "challenge": "ch5_superfluid_v2",
+  "generated_at": "2026-04-18T11:21:10Z",
+  "contracts": {
+    "host": {
+      "role": "Superfluid Host",
+      "address": "0x3E14dC1b13c488a8d5D310918780c983bD5982E7",
+      "proxy": true,
+      "proxy_runtime_size_bytes": 516,
+      "implementation": "0x513b7c5c6b7d8b21a14d6d5536878fb0a803bef4",
+      "selectors": {
+        "forwardBatchCall": "0x670e77e3"
+      },
+      "trusted_forwarders": [
+        "0x86C80a8aa58e0A4fa09A69624c31AB2a6CAD56b8"
+      ]
+    },
+    "ida": {
+      "role": "InstantDistributionAgreementV1",
+      "address": "0xB0aABBA4B2783A72C52956CDEF62d438ecA2d7a1",
+      "proxy": true,
+      "proxy_runtime_size_bytes": 516,
+      "implementation": "0x848497975f5757aa1a48e13bbf46d330e62b19a7"
+    },
+    "cfa": {
+      "role": "ConstantFlowAgreementV1",
+      "address": "0x6EeE6060f715257b970700bc2656De21dEdF074C",
+      "proxy": true,
+      "proxy_runtime_size_bytes": 516,
+      "implementation": "0xf0ec6a8842ca72aec8a4d4573e731242389e18a8"
+    },
+    "maticx": {
+      "role": "SuperToken / MATICx",
+      "address": "0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3"
+    },
+    "forwarder": {
+      "role": "Biconomy trusted forwarder",
+      "address": "0x86C80a8aa58e0A4fa09A69624c31AB2a6CAD56b8",
+      "contract_name": "BiconomyForwarder",
+      "compiler_version": "v0.7.6+commit.7338295f",
+      "proxy": false,
+      "runtime_size_bytes": 5340,
+      "deployer": "0x221cadcac35e18ecc89d1c3d8af88613b9d7518b",
+      "deployment_block": 12381067,
+      "owner": "0xbb3982c15D92a8733e82Db8EBF881D979cFe9017",
+      "registered_domain_separator": "0x77959d40760f0cd2a578ba1067bb7450f052b730584fc9654556baa9e28e6a42",
+      "abi_summary": {
+        "declared_events": [
+          "DomainRegistered(bytes32 indexed domainSeparator, bytes domainValue)",
+          "OwnershipTransferred(address indexed previousOwner, address indexed newOwner)"
+        ],
+        "execute_methods": [
+          "executeEIP712((address,address,address,uint256,uint256,uint256,uint256,uint256,bytes),bytes32,bytes)",
+          "executePersonalSign((address,address,address,uint256,uint256,uint256,uint256,uint256,bytes),bytes)"
+        ],
+        "execute_event_present": false,
+        "note": "Verified ABI/source contains no MetaTransactionExecuted-style event; execution history must be reconstructed from tx calldata."
+      },
+      "source_semantics": {
+        "executePersonalSign_uses_chainid_in_signature": false,
+        "executeEIP712_requires_runtime_chainid_match_deployment_chainid": true,
+        "nonce_increment_happens_before_forwarded_call": true,
+        "downstream_revert_reverts_nonce_increment": true
+      },
+      "event_scan": {
+        "scan_window": {
+          "from_block": 11000000,
+          "to_block": 27039967
+        },
+        "log_count": 2,
+        "logs": [
+          {
+            "block_number": 12381075,
+            "tx_hash": "0x7d0a217531a6badcef39d3216222ae3d24189043a1eb789b8d6c71751ec469c2",
+            "event": "DomainRegistered",
+            "domain_separator": "0x77959d40760f0cd2a578ba1067bb7450f052b730584fc9654556baa9e28e6a42",
+            "raw_data": "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000a036c25de3e541d5d970f66e4210d728721220fff5c077cc6cd008b3a0c62adab7753af952db20649ef5de343fc5c3f89b9add1b06a2fa67dd566266c10be2bff6c89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc600000000000000000000000086c80a8aa58e0a4fa09a69624c31ab2a6cad56b80000000000000000000000000000000000000000000000000000000000000089"
+          },
+          {
+            "block_number": 12381080,
+            "tx_hash": "0xffc2f5269434f9d5c06e04248416724c860ca248e327788b96d4fb88a52bc25d",
+            "event": "OwnershipTransferred",
+            "previous_owner": "0x221cadcac35e18ecc89d1c3d8af88613b9d7518b",
+            "new_owner": "0xbb3982c15d92a8733e82db8ebf881d979cfe9017"
+          }
+        ],
+        "summary": "Only domain registration and ownership transfer logs exist in-range. No executePersonalSign/executeEIP712 event was emitted because the contract does not define one."
+      },
+      "historical_tx_scan": {
+        "scan_window": {
+          "from_block": 11000000,
+          "to_block": 27039967
+        },
+        "total_transactions": 124074,
+        "first_activity_block": 12381067,
+        "last_activity_block": 19019983,
+        "inactive_from_block": 19019984,
+        "inactive_gap_before_fork_blocks": 8019984,
+        "method_counts": {
+          "executeEIP712": 103926,
+          "executePersonalSign": 20145,
+          "other": 3
+        },
+        "request_to_host_filter": {
+          "host_address": "0x3E14dC1b13c488a8d5D310918780c983bD5982E7",
+          "executeEIP712_hits": 0,
+          "executePersonalSign_hits": 0,
+          "total_hits": 0
+        },
+        "host_targeted_requests": [],
+        "personal_sign_replay_candidates": [],
+        "nonce_checks_performed": 0,
+        "summary": "Decoding all historical executeEIP712/executePersonalSign calldata in the requested range produced zero requests where request.to == Host. With no Host-targeted personal-sign payload, there is no nonce-matching replay candidate to simulate on the fork."
+      }
+    }
+  }
+}

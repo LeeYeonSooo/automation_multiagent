@@ -1,0 +1,23 @@
+{
+  "address": "0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff",
+  "label": "quickswap_v2_router",
+  "chain": "polygon",
+  "chain_id": 137,
+  "contract_name": "UniswapV2Router02",
+  "compiler_version": "v0.6.6+commit.6c089d02",
+  "optimization_used": "1",
+  "runs": "999999",
+  "constructor_arguments": "0000000000000000000000005757371414417b8c6caad45baef941abc7d3ab320000000000000000000000000d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+  "evm_version": "Default",
+  "license_type": "GNU GPLv3",
+  "proxy": "0",
+  "implementation": "",
+  "swarm_source": "ipfs://6dd6e03c4b2c0a8e55214926227ae9e2d6f9fec2ce74a6446d615afa355c84f3",
+  "similar_match": "",
+  "contract_file_name": null,
+  "source_format": "single-file",
+  "source_files": [
+    "UniswapV2Router02.sol"
+  ],
+  "note": null
+}

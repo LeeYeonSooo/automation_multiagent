@@ -1,0 +1,32 @@
+{
+  "address": "0xCAa7349CEA390F89641fe306D93591f87595dc1F",
+  "address_lower": "0xcaa7349cea390f89641fe306d93591f87595dc1f",
+  "label": "usdcx_proxy",
+  "chain": "polygon",
+  "chain_id": 137,
+  "requested": true,
+  "discovered_via": null,
+  "verified": true,
+  "contract_name": "UUPSProxy",
+  "compiler_version": "v0.7.6+commit.7338295f",
+  "optimizer_enabled": true,
+  "optimizer_runs": 200,
+  "evm_version": "Default",
+  "libraries": [],
+  "libraries_raw": "",
+  "license_type": "",
+  "proxy": true,
+  "proxy_implementation": "0xfd83982ee75892781242141ee19e1b42428b8220",
+  "constructor_arguments": "",
+  "source_format": "standard_json",
+  "source_file_count": 3,
+  "source_files": [
+    "src/@openzeppelin/contracts/proxy/Proxy.sol",
+    "src/Users/logic/ethereum/superfluid/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSProxy.sol",
+    "src/Users/logic/ethereum/superfluid/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSUtils.sol"
+  ],
+  "abi_verified": true,
+  "fetched_at_utc": "2026-04-18T04:16:30.231037+00:00",
+  "swarm_source": "",
+  "similar_match": "0x6EeE6060f715257b970700bc2656De21dEdF074C"
+}

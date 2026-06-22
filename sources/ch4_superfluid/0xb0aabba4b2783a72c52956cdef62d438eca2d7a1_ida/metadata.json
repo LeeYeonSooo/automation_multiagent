@@ -1,0 +1,25 @@
+{
+  "address": "0xB0aABBA4B2783A72C52956CDEF62d438ecA2d7a1",
+  "label": "ida",
+  "chain": "polygon",
+  "chain_id": 137,
+  "contract_name": "UUPSProxy",
+  "compiler_version": "v0.7.6+commit.7338295f",
+  "optimization_used": "1",
+  "runs": "200",
+  "constructor_arguments": "",
+  "evm_version": "Default",
+  "license_type": "",
+  "proxy": "1",
+  "implementation": "0x86e8ac788e9997b4e0e43a4c8fb12f69ad4bacbf",
+  "swarm_source": "",
+  "similar_match": "",
+  "contract_file_name": null,
+  "source_format": "solidity-standard-json",
+  "source_files": [
+    "@openzeppelin/contracts/proxy/Proxy.sol",
+    "Users/logic/ethereum/superfluid/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSProxy.sol",
+    "Users/logic/ethereum/superfluid/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSUtils.sol"
+  ],
+  "note": null
+}

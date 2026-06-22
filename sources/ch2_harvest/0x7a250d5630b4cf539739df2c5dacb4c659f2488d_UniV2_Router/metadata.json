@@ -1,0 +1,30 @@
+{
+  "address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+  "address_lower": "0x7a250d5630b4cf539739df2c5dacb4c659f2488d",
+  "label": "UniV2_Router",
+  "chain": "ethereum",
+  "chain_id": 1,
+  "requested": true,
+  "discovered_via": null,
+  "verified": true,
+  "contract_name": "UniswapV2Router02",
+  "compiler_version": "v0.6.6+commit.6c089d02",
+  "optimizer_enabled": true,
+  "optimizer_runs": 999999,
+  "evm_version": "istanbul",
+  "libraries": [],
+  "libraries_raw": "",
+  "license_type": "GNU GPLv3",
+  "proxy": false,
+  "proxy_implementation": null,
+  "constructor_arguments": "0000000000000000000000005c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "source_format": "single_file",
+  "source_file_count": 1,
+  "source_files": [
+    "src/UniswapV2Router02.sol"
+  ],
+  "abi_verified": true,
+  "fetched_at_utc": "2026-04-18T04:13:45.591051+00:00",
+  "swarm_source": "ipfs://6dd6e03c4b2c0a8e55214926227ae9e2d6f9fec2ce74a6446d615afa355c84f3",
+  "similar_match": ""
+}

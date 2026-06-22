@@ -1,0 +1,31 @@
+{
+  "label": "UraniumFactory",
+  "address": "0xA943eA143cd7E79806d670f4a7cf08F8922a454F",
+  "chain": "bsc",
+  "chain_id": 56,
+  "contract_name": "UraniumFactory",
+  "compiler_version": "v0.5.16+commit.9c3226ce",
+  "compiler_type": "solc-j",
+  "optimizer_enabled": true,
+  "optimizer_runs": 999999,
+  "evm_version": "Default",
+  "libraries": {},
+  "license_type": null,
+  "proxy": false,
+  "proxy_implementation": null,
+  "verified": true,
+  "source_layout": "standard_json",
+  "source_files": [
+    "home/camille/Project/swap/uranium/swap-core/contracts/UraniumERC20.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/UraniumFactory.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/UraniumPair.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/interfaces/IERC20.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/interfaces/IUraniumCallee.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/interfaces/IUraniumERC20.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/interfaces/IUraniumFactory.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/interfaces/IUraniumPair.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/libraries/Math.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/libraries/SafeMath.sol",
+    "home/camille/Project/swap/uranium/swap-core/contracts/libraries/UQ112x112.sol"
+  ]
+}

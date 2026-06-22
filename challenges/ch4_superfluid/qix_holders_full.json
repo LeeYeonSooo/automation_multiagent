@@ -1,0 +1,79 @@
+{
+  "token": "0xe1ca10e6a10c0f72b74df6b7339912babfb1f8b5",
+  "total_events": 378,
+  "total_holders": 18,
+  "holders": [
+    {
+      "address": "0x5073c1535a1a238e7c7438c553f1a2baac366cee",
+      "transfer_balance": "21832257700000000000000000"
+    },
+    {
+      "address": "0xe6116aa08e14afe08a9a563e9ef6ccd5b47070b7",
+      "transfer_balance": "5060150000000000000000000"
+    },
+    {
+      "address": "0x1032bc575e9d9ae556693e545dc814e25504eb22",
+      "transfer_balance": "150000000000000000000000"
+    },
+    {
+      "address": "0xad95a5fe898679b927c266eb2edfabc7fe268c27",
+      "transfer_balance": "95000000000000000000000"
+    },
+    {
+      "address": "0x49cc97653eefc84444a660f07a8547dea7ad87a8",
+      "transfer_balance": "12649416797288358372050"
+    },
+    {
+      "address": "0x5e452c52060ff374374835e469b85b60d01ecfb9",
+      "transfer_balance": "12632000000000000000000"
+    },
+    {
+      "address": "0x59217db02763cb5b10593d9ead6adf62f5724387",
+      "transfer_balance": "1466085929241512387936"
+    },
+    {
+      "address": "0xc1b9f63f0226efb1019425248e8af8094a7595a3",
+      "transfer_balance": "13816482753357148170"
+    },
+    {
+      "address": "0xb79a3927b71b7538a8f32bff5ca7f07aa229f74b",
+      "transfer_balance": "5000000000000000000"
+    },
+    {
+      "address": "0xc82d79d9e6594b8aa98e912c69ba561dcc4ead42",
+      "transfer_balance": "5000000000000000000"
+    },
+    {
+      "address": "0x4edb4161d16c89b71aec027930a943c3d4cf0777",
+      "transfer_balance": "1525894691721493634"
+    },
+    {
+      "address": "0x013fb7fef023646bf4e76cb756206a742f31813e",
+      "transfer_balance": "1031944340064000000"
+    },
+    {
+      "address": "0xff84613bdd2fbbec920db5fb7da0e828de3d48ac",
+      "transfer_balance": "447684430076000000"
+    },
+    {
+      "address": "0xda94c818a091b777f67962f683071417f1fa4951",
+      "transfer_balance": "23156356556000000"
+    },
+    {
+      "address": "0x2d815240a61731c75fa01b2793e1d3ed09f289d0",
+      "transfer_balance": "10000000000000000"
+    },
+    {
+      "address": "0xe84a2a488658907ef8253c07f80fe724c9ae34f5",
+      "transfer_balance": "8667023815000000"
+    },
+    {
+      "address": "0x1f452f2beea8c1105cd5363b18a0995367a87d97",
+      "transfer_balance": "6334700000000000"
+    },
+    {
+      "address": "0x743b091203a0fce407febbe13c63b2de87db7bf3",
+      "transfer_balance": "2137361677000000"
+    }
+  ]
+}

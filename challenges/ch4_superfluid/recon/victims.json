@@ -1,0 +1,2406 @@
+{
+  "fork_block": 24684693,
+  "generated_at": "2026-04-18T01:52:41Z",
+  "tokens": [
+    {
+      "symbol": "DAIx",
+      "token": "0x1305f6b6df9dc47159d12eb7ac2804d4a33173c2",
+      "deployment_block": 12122878,
+      "touched_addresses": 4755,
+      "holder_count": 90,
+      "victims": [
+        {
+          "addr": "0xb7933cef895c36f2cec093973c6cd15c6365e568",
+          "balance": "1850506944444443793066"
+        },
+        {
+          "addr": "0x61b8fdeca768f93cdaebe7e8b7ff964173bf36d2",
+          "balance": "1723827160493826851584"
+        },
+        {
+          "addr": "0x41f6d098eb907d551f6107c166f14da00cb8eaad",
+          "balance": "1598885439814814272922"
+        },
+        {
+          "addr": "0x4f296f0438d03250e43716cf1cbbb83ec4e9b484",
+          "balance": "1431887538580244901620"
+        },
+        {
+          "addr": "0x6663c2b5599c8240ab4299e4d16eb92ac7278759",
+          "balance": "1256678240740738186390"
+        },
+        {
+          "addr": "0xb57eafff467581546aae2d10778a05ae08536d18",
+          "balance": "990115740740740178355"
+        },
+        {
+          "addr": "0x7d54d807e9132fc34acde66de49b36d4f37e8e0c",
+          "balance": "701704695767196200912"
+        },
+        {
+          "addr": "0x37c1a307c0a72eab255f75fdb18e0a03dda0be45",
+          "balance": "652083333333330820264"
+        },
+        {
+          "addr": "0x17fe4ed21e35b5ad800179b0c20447ca3f5280db",
+          "balance": "598972929310048725437"
+        },
+        {
+          "addr": "0xe4b7fbc0c55299db43553908c36c98afd641d3cf",
+          "balance": "522888888888888704832"
+        },
+        {
+          "addr": "0xace1ced777f255e01d6772422c7f0189da11d494",
+          "balance": "416442139547543239961"
+        },
+        {
+          "addr": "0x1a873081b5f611591dfd779ba0335b14d9b24de1",
+          "balance": "412691820987654110890"
+        },
+        {
+          "addr": "0x2940190fdb5770354375994dc17a7c74507666f2",
+          "balance": "338956036349541102112"
+        },
+        {
+          "addr": "0x4b72e294cf18ce1248751da347b1bc17e10acce3",
+          "balance": "309346836419751615854"
+        },
+        {
+          "addr": "0x33caf1e780fc8a92247f42a220caeafde3b5d553",
+          "balance": "230187349533926401470"
+        },
+        {
+          "addr": "0xdccf49fe72d152ef9e3239191f88b7c366885399",
+          "balance": "213381571977178242297"
+        },
+        {
+          "addr": "0xbdbaafe12313ca57b11e8c759579365e69a05a7e",
+          "balance": "208521604938271413392"
+        },
+        {
+          "addr": "0x561097f3d0f193f53e56899555218e3e88d1ee38",
+          "balance": "198639146378072791530"
+        },
+        {
+          "addr": "0x793f2f026813f94ae8a8938a2db06ee400fb102d",
+          "balance": "97098406632691405338"
+        },
+        {
+          "addr": "0x942c16ed401be3f41b6ff0eb57905dd59c516eab",
+          "balance": "31595682867327452890"
+        },
+        {
+          "addr": "0x2e5db00fc1bb2d3bde8a9a21c37a840952ff3d46",
+          "balance": "31014212577530513422"
+        },
+        {
+          "addr": "0x208499261b5eec3af23db25e56bf8e75dfc83ae4",
+          "balance": "30019524910708089119"
+        },
+        {
+          "addr": "0x6e29e53b33c358006b86aa272671c69a08a63f83",
+          "balance": "22832896856847042180"
+        },
+        {
+          "addr": "0xf9a99e93be712b1669c401b00640bd9b02626d16",
+          "balance": "19999264674022724800"
+        },
+        {
+          "addr": "0x7db06a7676eb6f9d2276c16148f0f0449e5c1dc0",
+          "balance": "18592592592592569984"
+        },
+        {
+          "addr": "0x480f16f628861ead03ceba577f2bac0fa4d7a569",
+          "balance": "15352569443407421132"
+        },
+        {
+          "addr": "0x1f538708d0706a254787eb2de11437c3288a8eff",
+          "balance": "15000000000000000000"
+        },
+        {
+          "addr": "0xc515548ec680546d3f98e44fa123a2f19c44c581",
+          "balance": "14832316887767978845"
+        },
+        {
+          "addr": "0x7e219b0ae122c7c611218a8103ebf295bcf181d4",
+          "balance": "14603935185185187720"
+        },
+        {
+          "addr": "0x9db0996956491b68aca1f3909edcc778cb0f5f7e",
+          "balance": "12000000000000000000"
+        },
+        {
+          "addr": "0x1f1fe6e38fa2eb71941fde54828e5162528062ba",
+          "balance": "10892255051774279331"
+        },
+        {
+          "addr": "0x1363617a0c73e94c45b20e287f2257b1d8ae8969",
+          "balance": "10650643104679282475"
+        },
+        {
+          "addr": "0x1b4aa4ad0fa6cb4079ead2b0fb2239ae01f464b6",
+          "balance": "10000000000000000000"
+        },
+        {
+          "addr": "0x022a19b0d98e4b1a6c1d53a7781e73dd5ab575a8",
+          "balance": "7271247682844926373"
+        },
+        {
+          "addr": "0xb9b866f50cfabbb9cfc757e7e3934bc9940f019c",
+          "balance": "6999959104938271584"
+        },
+        {
+          "addr": "0xd5ef39b8f987ac07a11bd48cfad7184c8354ab63",
+          "balance": "6941377314814770390"
+        },
+        {
+          "addr": "0x3c151f124ae35e014bd0e92c6ebe7c9b87ee46a3",
+          "balance": "4672106480435718972"
+        },
+        {
+          "addr": "0x28636fad5c987e930a48a5ae5ec2375c934e98e8",
+          "balance": "4181052275974898936"
+        },
+        {
+          "addr": "0xd53f369dedfd7bd0a3b33ae2926669765306bcb7",
+          "balance": "3886257410214636231"
+        },
+        {
+          "addr": "0xa0ea2432339b2598d656cf4c42780ec415f767e2",
+          "balance": "3392712190839521250"
+        },
+        {
+          "addr": "0xe7f044646c6283c0e1348b2a93f825ebb5eaec77",
+          "balance": "3123000000000000000"
+        },
+        {
+          "addr": "0x00b241fde4c04c1b31d85b0ed58fd9ed3a79f1cb",
+          "balance": "3000000000000000000"
+        },
+        {
+          "addr": "0x9bef427fa1ff5269b824eed9415f7622b81244f5",
+          "balance": "2963673941156253927"
+        },
+        {
+          "addr": "0x41a858e7bec897a17f3547f7b71790e674750900",
+          "balance": "2657339002747111967"
+        },
+        {
+          "addr": "0x562654bece36a1aa7d812f91b0b6011ac9a19360",
+          "balance": "2500000000000000000"
+        },
+        {
+          "addr": "0x0c387030a5d3acdcde1a8ddaf26df31bbc1ce763",
+          "balance": "2483368061236064672"
+        },
+        {
+          "addr": "0xe371142e4b9c22743b6bbf87fb96efb01526b544",
+          "balance": "2261342592592578120"
+        },
+        {
+          "addr": "0x42f7ac47cded2c70cfcace730b1c646d1c4ec3c0",
+          "balance": "2228705831528055824"
+        },
+        {
+          "addr": "0xe0e275b94850d504346ed119aa888dfa9fb3c9bd",
+          "balance": "2114997400606273989"
+        },
+        {
+          "addr": "0x6e61930a40ee6a8bb2075ddfa31bee562c3c4852",
+          "balance": "2101991703818551434"
+        },
+        {
+          "addr": "0x061d39c657c22cfc58b035a06e1c479813864172",
+          "balance": "2048560876039675894"
+        },
+        {
+          "addr": "0x075e72a5edf65f0a5f44699c7654c1a76941ddc8",
+          "balance": "1700000000000000000"
+        },
+        {
+          "addr": "0x79ac7908d54c50d030e805631ce92ab1e5bcdc7e",
+          "balance": "1608791692103196660"
+        },
+        {
+          "addr": "0x96732bfcbb9db4a227dcbfbf074cf9cae86d3453",
+          "balance": "1500000000000000000"
+        },
+        {
+          "addr": "0xcb7788d764037bb39ab419e622494cb20bce5396",
+          "balance": "1424119522375222171"
+        },
+        {
+          "addr": "0x7bcef0487028d1f7f4ed356b48ec32e3276fefa6",
+          "balance": "1365429783949857190"
+        },
+        {
+          "addr": "0x96c2e7c7385163ee268469fbc108ac60d493c1e5",
+          "balance": "1094248686449685282"
+        },
+        {
+          "addr": "0x1111111648cca5d28dc85e0b0b04b735491fd9ad",
+          "balance": "1073366961132495298"
+        },
+        {
+          "addr": "0x2b99e97eb6540272f085763e614926ca462deafc",
+          "balance": "1044748741722377120"
+        },
+        {
+          "addr": "0xc09c3c340874215f0ffcd32661275d2dbe87fe38",
+          "balance": "1044293814540693259"
+        },
+        {
+          "addr": "0x9854177cebbf87fcacb0ff2b8f43ebbdd8d2ea26",
+          "balance": "1043160205665852552"
+        },
+        {
+          "addr": "0x4258728f8f49691e93b66dca848465bee6811d74",
+          "balance": "1000180555555574426"
+        },
+        {
+          "addr": "0xc03d6744e442df5454075124b747a18b8630ba16",
+          "balance": "995835664594885512"
+        },
+        {
+          "addr": "0x8ccbfaae6bc02a73bbe8d6d8017cc8313e4c90a7",
+          "balance": "970882287684361628"
+        },
+        {
+          "addr": "0x52e4e16d4eca8cb21ea104fced1b9a43589f3fb6",
+          "balance": "890388491552073825"
+        },
+        {
+          "addr": "0x28c05d52b8bd6bf93f124f78656a8df85f8342fb",
+          "balance": "629014658672897626"
+        },
+        {
+          "addr": "0xa63d2851ce695fcaf5d484a6aa63f3bf3f8e49cd",
+          "balance": "481249999999993292"
+        },
+        {
+          "addr": "0x10c602dfa415cd81a278e0386fcfd76e1bba2b6f",
+          "balance": "480127314814811992"
+        },
+        {
+          "addr": "0x2a8cedaae0aefcbd76522ee2939b726360c7869c",
+          "balance": "384795887677256768"
+        },
+        {
+          "addr": "0xa7e6e024986d8bba48bf9c8513b773fa9bbf0dcb",
+          "balance": "273877314814813062"
+        },
+        {
+          "addr": "0xa152715df800db5926598917a6ef3702308bcb7e",
+          "balance": "252392380768518959"
+        },
+        {
+          "addr": "0x1dab8da475acce5ef82dc6a0ab21cf758f18a8b8",
+          "balance": "228076046034312970"
+        },
+        {
+          "addr": "0x95dd290e6f0c6f0f5192472ea389dae90e7d55ea",
+          "balance": "184772315146393536"
+        },
+        {
+          "addr": "0x56072658ad626acf78197e7440ccce8066ffa606",
+          "balance": "93956979037438134"
+        },
+        {
+          "addr": "0x20d87eaa94f2d01bb874f1f3e480d748c501f043",
+          "balance": "93946871012747714"
+        },
+        {
+          "addr": "0x2445098c03badf7c318080d115f121b50216e714",
+          "balance": "91360270989549810"
+        },
+        {
+          "addr": "0x0d58498c870c99c9ff33cfd681238defdf217e81",
+          "balance": "78943985210278846"
+        },
+        {
+          "addr": "0xa614b14f5ee8664a1c8603eb1c4188522b705420",
+          "balance": "78904371012751658"
+        },
+        {
+          "addr": "0x13e2f7751e7c4475216e419763ef5beefca12f6a",
+          "balance": "63147894466298224"
+        },
+        {
+          "addr": "0x05ee036d7ae000e7ee675606e3341e1bb3a7057a",
+          "balance": "32368155862771366"
+        },
+        {
+          "addr": "0x107a6578ab250f79f9763fc825e8d6cab0d33c6a",
+          "balance": "30450989428192302"
+        },
+        {
+          "addr": "0x66da1e3a39516a5e07c7f3e36e683a81393ecd3a",
+          "balance": "29468294470001797"
+        },
+        {
+          "addr": "0x70d212ac38f5a03522def9ed878e2f1d99489f43",
+          "balance": "29462777494693667"
+        },
+        {
+          "addr": "0x47de4fd666373ca4a793e2e0e7f995ea7d3c9a29",
+          "balance": "18250312500000567"
+        },
+        {
+          "addr": "0xa7a7deac1a54e82e57cc34c2d1f0e7f6f5b37346",
+          "balance": "12284721349576547"
+        },
+        {
+          "addr": "0x27c7d067a0c143990ec6ed2772e7136cfcfaecd6",
+          "balance": "11871141975437800"
+        },
+        {
+          "addr": "0x4a8845df02c6f7d7625cefd887b418e013f56555",
+          "balance": "9109964937011944"
+        },
+        {
+          "addr": "0x0a70fbb45bc8c70fb94d8678b92686bb69dea3c3",
+          "balance": "25872"
+        },
+        {
+          "addr": "0x250efbb94de68dd165bd6c98e804e08153eb91c6",
+          "balance": "17237"
+        },
+        {
+          "addr": "0x5786d3754443c0d3d1ddea5bb550ccc476fdf11d",
+          "balance": "6317"
+        }
+      ]
+    },
+    {
+      "symbol": "ETHx",
+      "token": "0x27e1e4e6bc79d93032abef01025811b7e4727e85",
+      "deployment_block": 12122800,
+      "touched_addresses": 4140,
+      "holder_count": 105,
+      "victims": [
+        {
+          "addr": "0x17fe4ed21e35b5ad800179b0c20447ca3f5280db",
+          "balance": "1365167393057629608"
+        },
+        {
+          "addr": "0xb27f6df486ef5dee2e3a4dc4f257dd63e5a5e371",
+          "balance": "933407543539439172"
+        },
+        {
+          "addr": "0x0912f059fd18bc4cef1b512058ccb415f204a2d7",
+          "balance": "444645833331965531"
+        },
+        {
+          "addr": "0x282afbdc07575b5888b82c87530c21b9c2daac9b",
+          "balance": "174703082519898268"
+        },
+        {
+          "addr": "0xb95d0877b4830858fdaf6a1111d8a233214c06b2",
+          "balance": "99896234990698702"
+        },
+        {
+          "addr": "0x3f753bad8d612c9afeccba1b7d5f84a339071f6b",
+          "balance": "96983646918286584"
+        },
+        {
+          "addr": "0xa25bfbc164ea24ab1fff48b924230b6da73ba33e",
+          "balance": "87755353835779215"
+        },
+        {
+          "addr": "0xbc3e6182f6e3abbc3b9b377031d0270fa9f778a9",
+          "balance": "86041438491796969"
+        },
+        {
+          "addr": "0x1ef7465c3a7b8a9e68a16ded16946a5b8a808734",
+          "balance": "76787976190051350"
+        },
+        {
+          "addr": "0x32248cb2c05ce6eeeb17649b61e6338052b30afe",
+          "balance": "53968042171897083"
+        },
+        {
+          "addr": "0x0a70fbb45bc8c70fb94d8678b92686bb69dea3c3",
+          "balance": "36055617486462609"
+        },
+        {
+          "addr": "0x44badc934dfe1211f17dd9be4caab6481320a10a",
+          "balance": "15935268452352269"
+        },
+        {
+          "addr": "0xc604d7455d39910fb80334a1014535b9a7e695e6",
+          "balance": "15522160515984954"
+        },
+        {
+          "addr": "0xf7789dc44a5f0da00a4a60ebd42c03b241d29332",
+          "balance": "15479863227563702"
+        },
+        {
+          "addr": "0x377bc868ab9db46b26e61aca1cd41adc3ba325f9",
+          "balance": "15291259556882999"
+        },
+        {
+          "addr": "0xab6be7a78f607714771e881cd5b5ad9a9b7e6da6",
+          "balance": "10000000000000000"
+        },
+        {
+          "addr": "0x239798073c79e93d8bf3bb1301cd3c764ab64f27",
+          "balance": "9524904876811876"
+        },
+        {
+          "addr": "0x452181dae31cf9f42189df71ec64298993bee6d3",
+          "balance": "6323069273574664"
+        },
+        {
+          "addr": "0x7e9e86accba39cd1c64690b8f8001a598b615641",
+          "balance": "5238099164528640"
+        },
+        {
+          "addr": "0x26715b05758fc09964733dd4b6a87e084d8ce69e",
+          "balance": "1952592592592896"
+        },
+        {
+          "addr": "0x0c9d97e6b7c73eb3a082497cd077c20304887777",
+          "balance": "1761921296658086"
+        },
+        {
+          "addr": "0x3eebcaf63b35a6525fd53ae3048e9c9ac4a9988e",
+          "balance": "1592971777291920"
+        },
+        {
+          "addr": "0xc6204532a1ff2059b33c574d22a3f5a745217aae",
+          "balance": "1361570767564362"
+        },
+        {
+          "addr": "0x7d7a0ef469443c7811a3c9076eb0e5a7ed21526d",
+          "balance": "1129438686664901"
+        },
+        {
+          "addr": "0x42c5fce2806f884c673ca934ca02f62299834e0d",
+          "balance": "1074958183927962"
+        },
+        {
+          "addr": "0x93c5121ecdffcca5e1181589d10fcec149b9e08a",
+          "balance": "1063909293918290"
+        },
+        {
+          "addr": "0x990a1ae067d3027e4c5b991ad346877f7fd95e7c",
+          "balance": "960957766834852"
+        },
+        {
+          "addr": "0x002e1292eba0bb0c5f13f7d9b37eaad19e86a6dc",
+          "balance": "960955510993121"
+        },
+        {
+          "addr": "0x3304325666ff0b36413d298d7a145582d31eaf3f",
+          "balance": "960922652774241"
+        },
+        {
+          "addr": "0x6a1dc79092cd0a72ad278a0b5a0ce0d5ccd71995",
+          "balance": "960916479732107"
+        },
+        {
+          "addr": "0xae5499976ffd3e58be47bdd51c787a5201d957f4",
+          "balance": "853478194116636"
+        },
+        {
+          "addr": "0xa2730b4c15e0488ea9167bb75d6fa344bf3db632",
+          "balance": "265709683112725"
+        },
+        {
+          "addr": "0xbda1c295b5fb13304ee8d6aaabcf6ce92311defa",
+          "balance": "216307870416909"
+        },
+        {
+          "addr": "0x3941e2e89f7047e0ac7b9cce18fbe90927a32100",
+          "balance": "203234953704825"
+        },
+        {
+          "addr": "0xc4fdc34158f50e99358e0af7aef432c1d8761090",
+          "balance": "67477068274381"
+        },
+        {
+          "addr": "0x04201b338004ce6ff88d230706f4ed567a3e0b39",
+          "balance": "24368880856372"
+        },
+        {
+          "addr": "0xdd2a4dbf3fdc4ae3b34a11797f51350a4306f1bb",
+          "balance": "14028943847916"
+        },
+        {
+          "addr": "0xc90c8339089c3070f513b36435a28c7917c88ffc",
+          "balance": "10595753393994"
+        },
+        {
+          "addr": "0xee7c4aca7d64075550f1b119b4bb4a0aa889c340",
+          "balance": "552477539902"
+        },
+        {
+          "addr": "0x55dba508dd85ea4958445270239ac4e60a7d29b0",
+          "balance": "98825633537"
+        },
+        {
+          "addr": "0x74bc45b6ecdcb91d537b34d6c5e01c5d722e3cd7",
+          "balance": "98208758152"
+        },
+        {
+          "addr": "0xa0e997974a146a0b65c84e66d9dad1319e7533ca",
+          "balance": "97987697040"
+        },
+        {
+          "addr": "0x79244f763d09959c30eec50c83b11314bf2688c2",
+          "balance": "97917036235"
+        },
+        {
+          "addr": "0xda8c3342473341c7176ebbc6f33deabda53b9fb8",
+          "balance": "95449731897"
+        },
+        {
+          "addr": "0x1a3ac3fd028e4d50b252a17f54439f87c053b65c",
+          "balance": "95256634917"
+        },
+        {
+          "addr": "0x6eda7a35933b6e63d4d8f1c6bd3d5cdaa80bf33a",
+          "balance": "92910882094"
+        },
+        {
+          "addr": "0x5eaa5632e5a02c5a6aa6c4fd63c2a1db85ce6a69",
+          "balance": "92172642438"
+        },
+        {
+          "addr": "0x0ce517a4e13731d5e8bf184988e99416da6fdcef",
+          "balance": "85674199013"
+        },
+        {
+          "addr": "0xde0eb085c8ee06516356206d0b7d0e6ef7b8c49d",
+          "balance": "82791167837"
+        },
+        {
+          "addr": "0xf79221f1d79c4d738c716a27678e6a96575d6db4",
+          "balance": "82620586743"
+        },
+        {
+          "addr": "0xe161d07b0c66953edc7ce3f89d34fb1272a600b3",
+          "balance": "82411682545"
+        },
+        {
+          "addr": "0x0cbd39f71c68dfe81a89d39c24100f44374282d7",
+          "balance": "78332720342"
+        },
+        {
+          "addr": "0xc27523fce6fb1ccd180fa17dc7a9d3e563c1110c",
+          "balance": "76683948224"
+        },
+        {
+          "addr": "0x47f179ee8ce9d99fc21ae8a6c62c803e163fb028",
+          "balance": "76128792414"
+        },
+        {
+          "addr": "0x6597a00ce3ab87d809d6569a02db892a7f77ba11",
+          "balance": "67898262647"
+        },
+        {
+          "addr": "0x42a0e5f8b7720f20cd031e351c3c690543743df1",
+          "balance": "67508577515"
+        },
+        {
+          "addr": "0x27c7d067a0c143990ec6ed2772e7136cfcfaecd6",
+          "balance": "67077568277"
+        },
+        {
+          "addr": "0xb494e97ee367cfc1eeb6247d6e04b5bc2ba5c239",
+          "balance": "64487349980"
+        },
+        {
+          "addr": "0x0c34fbe2a96b4f10e655b3f91034e2aea170f13a",
+          "balance": "64258544381"
+        },
+        {
+          "addr": "0xe17f088538823ce91b4cf34b7f4f610ee13a64c7",
+          "balance": "63569367640"
+        },
+        {
+          "addr": "0x0b82523ff4c0ef2eee3b0864d6d71925684a35f0",
+          "balance": "61592491184"
+        },
+        {
+          "addr": "0xe3573099e4e7426ddd28b620b0e89cd734bc677e",
+          "balance": "61308261835"
+        },
+        {
+          "addr": "0x6dfc1b4a0b30e24ab1ba3dd7a177b8718535ee4e",
+          "balance": "60580628287"
+        },
+        {
+          "addr": "0x4de544423a07c57f14109abe0e22082c51909523",
+          "balance": "60558156793"
+        },
+        {
+          "addr": "0x6fe05d504f73c850b7d4370574ecccdffec335a7",
+          "balance": "57109861411"
+        },
+        {
+          "addr": "0x3f1bd2311f0fe4c267cedcf397b4550590bb434d",
+          "balance": "55426516496"
+        },
+        {
+          "addr": "0xdd704656cd588c9798cd26de4afdfed59aa06672",
+          "balance": "55234011445"
+        },
+        {
+          "addr": "0x9fdbf125e086ed329ff45c07ac2031bed67b94f5",
+          "balance": "54683362969"
+        },
+        {
+          "addr": "0x11bcdc86d560c502d28da7080092fec22c51c83b",
+          "balance": "51764165149"
+        },
+        {
+          "addr": "0x91665fcba298b6b4eacfacf8b6a6aa8259aa3570",
+          "balance": "48668518787"
+        },
+        {
+          "addr": "0x5094ccd326fb23a4a9803c34da5f0a49593a6196",
+          "balance": "44040308080"
+        },
+        {
+          "addr": "0x794db918085cae60487059b9c63ccdfd018c7bf0",
+          "balance": "42606666180"
+        },
+        {
+          "addr": "0x08171665d6558ebe36c6f4bef242524c4ffda1f5",
+          "balance": "41979999644"
+        },
+        {
+          "addr": "0xb0095b9b757e698313516f26a6d444b5782c9596",
+          "balance": "40592751943"
+        },
+        {
+          "addr": "0xcd8b83b9fce9a83173327e4fd6a7e884ecabb5f5",
+          "balance": "37624452313"
+        },
+        {
+          "addr": "0xb87b02945c2c47ecd79bf6649d0f54b576ca2a65",
+          "balance": "37368530084"
+        },
+        {
+          "addr": "0x1832f683fc22c4c1464e19d5cc7b00f8d39bafd7",
+          "balance": "37185887453"
+        },
+        {
+          "addr": "0x02458af7aeb408d05cb991fd3570f52668c0d380",
+          "balance": "37064554583"
+        },
+        {
+          "addr": "0x9a50be42840871ec4344f69db3ffbf880941f991",
+          "balance": "36682197194"
+        },
+        {
+          "addr": "0xcaa33dfd6710d46a6087ddf5e92cf352ce90d3ca",
+          "balance": "36416161333"
+        },
+        {
+          "addr": "0x2285a800f1d417ea949f401acdf8f7e2cfbbaac8",
+          "balance": "35148126924"
+        },
+        {
+          "addr": "0x8e7e55d2cdc4433217eae16957bcc18dbbfd986b",
+          "balance": "33385848416"
+        },
+        {
+          "addr": "0x2a74bf9656d47a88b3294004e175955bda995d3e",
+          "balance": "32869776316"
+        },
+        {
+          "addr": "0x148195b4faabb17e27bd7d90f261e3f843d6a08d",
+          "balance": "31918316342"
+        },
+        {
+          "addr": "0xfd2aa9f7e852b81b6bc4d136ddb3f712d790391d",
+          "balance": "31463038510"
+        },
+        {
+          "addr": "0x899eca455b39f5b54035286a3c4423628748ab64",
+          "balance": "31376278614"
+        },
+        {
+          "addr": "0xa88126de375ecdb0664f76ae3d0666995913a2f8",
+          "balance": "31308792179"
+        },
+        {
+          "addr": "0x6b1fb966feebd49673ef5f997e4e559107236653",
+          "balance": "28933973270"
+        },
+        {
+          "addr": "0xf1b2f5817d60fa7cd081b29dc94aacdef6da27ff",
+          "balance": "26934793392"
+        },
+        {
+          "addr": "0xf706a488a9747c6828b177b7742958703ac8d4f8",
+          "balance": "24129099356"
+        },
+        {
+          "addr": "0x1487274d6fcbe9e5d38e3bc900bddb202c16d9c1",
+          "balance": "19637227836"
+        },
+        {
+          "addr": "0x8146b4678db798b1af92f45c3720730b67248cf1",
+          "balance": "19048251875"
+        },
+        {
+          "addr": "0x6fa91652b8b37fa781f04d1984ffe1f7bc268258",
+          "balance": "18110202619"
+        },
+        {
+          "addr": "0x43dc92388a07f937721c5b67d45381053dda2111",
+          "balance": "11958056198"
+        },
+        {
+          "addr": "0x3de35ed690af8670efb1224b367a9373e0ff5dff",
+          "balance": "9723999481"
+        },
+        {
+          "addr": "0x0ad329a2c78409ab52b21aa3d7c26be54a9d1172",
+          "balance": "9592913145"
+        },
+        {
+          "addr": "0x0d5a6d2e9c71ac08213e0277756decc68e9ba3df",
+          "balance": "8145299595"
+        },
+        {
+          "addr": "0x13ae5042d3abe5371b6b24b73e57ec718222a4da",
+          "balance": "8051596954"
+        },
+        {
+          "addr": "0x6ff28e036d9a2cd4a5684754ae9db9d4ed365661",
+          "balance": "6842725609"
+        },
+        {
+          "addr": "0xbcb1c94c0a52b0752324dbe8d00254c97fc81438",
+          "balance": "590703267"
+        },
+        {
+          "addr": "0x1a622087a10d6661444a0ea93cf447fa44029788",
+          "balance": "350233154"
+        },
+        {
+          "addr": "0x5786d3754443c0d3d1ddea5bb550ccc476fdf11d",
+          "balance": "6562458"
+        },
+        {
+          "addr": "0x9bef427fa1ff5269b824eed9415f7622b81244f5",
+          "balance": "2990294"
+        },
+        {
+          "addr": "0x8082ab2f4e220dad92689f3682f3e7a42b206b42",
+          "balance": "2713321"
+        },
+        {
+          "addr": "0xf6a03fcf12cdc8066afaf12255105ca301e15ba6",
+          "balance": "193539"
+        }
+      ]
+    },
+    {
+      "symbol": "MATICx",
+      "token": "0x3ad736904e9e65189c3000c7dd2c8ac8bb7cd4e3",
+      "deployment_block": 11651904,
+      "touched_addresses": 0,
+      "victims": []
+    },
+    {
+      "symbol": "USDCx",
+      "token": "0xcaa7349cea390f89641fe306d93591f87595dc1f",
+      "deployment_block": 12122841,
+      "touched_addresses": 7873,
+      "holder_count": 383,
+      "victims": [
+        {
+          "addr": "0x6583f33895b538dfdeee234f2d34df1033655de1",
+          "balance": "163471604381317834797300"
+        },
+        {
+          "addr": "0xaf8b668bfc2ad9457c03c2989c7816b5cbe2185c",
+          "balance": "33117645752845497203840"
+        },
+        {
+          "addr": "0x7b9deffca9356a99f95759afc6e709422d845a7c",
+          "balance": "15362419025369608243521"
+        },
+        {
+          "addr": "0xde85df29402811ce481dfa415a21e43963c1f662",
+          "balance": "13810863754028934305800"
+        },
+        {
+          "addr": "0xfed02431ddfa9421cb075736f9897bd4eb689686",
+          "balance": "6217985371527775709391"
+        },
+        {
+          "addr": "0x3c663b13b6c8a4c04f27706d0413d83ba99f040a",
+          "balance": "5524061209287032871645"
+        },
+        {
+          "addr": "0x5a9e792143bf2708b4765c144451dca54f559a19",
+          "balance": "5129960997463542975944"
+        },
+        {
+          "addr": "0x0d0b3a4fb611d11b044444ed2154cdcd7830d506",
+          "balance": "4834907986106950748214"
+        },
+        {
+          "addr": "0xad39f774a75c7673ee0c8ca2a7b88454580d7f53",
+          "balance": "4356986595214535590748"
+        },
+        {
+          "addr": "0xc31249ba48763df46388ba5c4e7565d62ed4801c",
+          "balance": "4149901548383311009526"
+        },
+        {
+          "addr": "0x0ad342b5746ebabb0754519d474e8b71b6cd6a5e",
+          "balance": "2392847032835254222332"
+        },
+        {
+          "addr": "0xf9ce34dfcd3cc92804772f3022af27bcd5e43ff2",
+          "balance": "2358307500267611153718"
+        },
+        {
+          "addr": "0xe70bf452487a9045ee85d1334e8f169d87bb6de7",
+          "balance": "2023655822196728721211"
+        },
+        {
+          "addr": "0x1e1f1758c8d6687c9ad13bed8a9f058c5341a359",
+          "balance": "1870075231493825684460"
+        },
+        {
+          "addr": "0xc6e2bacd63a3a53ad503052ec836706ba3144b9b",
+          "balance": "1521770914851187381536"
+        },
+        {
+          "addr": "0xb919cab8962c5e6d8cc0483661819a44a8ff98e6",
+          "balance": "1284820987987653621890"
+        },
+        {
+          "addr": "0x19762ed6d3645cbfc3b04bbd907b3dc5e98c9915",
+          "balance": "1257729020832963056998"
+        },
+        {
+          "addr": "0xcbaffd3c17c98cb6448bf92151a0318e595f3768",
+          "balance": "1166212634344745563729"
+        },
+        {
+          "addr": "0xb69f1147bfeb5f17149f4085d4b659da78b08747",
+          "balance": "1153054729015862988428"
+        },
+        {
+          "addr": "0x174e0b54cc49d9a3056af38babc5fd2ae2e41318",
+          "balance": "1028304783949838845835"
+        },
+        {
+          "addr": "0x7c782807a08df99e095fb45b770f47239fa8e108",
+          "balance": "914595238624338102702"
+        },
+        {
+          "addr": "0x34e44d22db10a68d37d2b7ca923b907e68176938",
+          "balance": "876556790123453636264"
+        },
+        {
+          "addr": "0xdfaec1cf903a57f99a49df398e7dd5036ec95c67",
+          "balance": "744291468518517701118"
+        },
+        {
+          "addr": "0x7b790240cedd26d8a453b289bbb453cb21b4d29c",
+          "balance": "687629459875644055512"
+        },
+        {
+          "addr": "0x81ba93b26bce8ca5d649b6607df15e6d45462d8f",
+          "balance": "687560493821507728480"
+        },
+        {
+          "addr": "0x9bee292e90346b394b2349dbcd2cff6dcd1e9d42",
+          "balance": "652547159391237970746"
+        },
+        {
+          "addr": "0x408df538ffb49f6c88446ef83bce657eaa475746",
+          "balance": "630810185185184598065"
+        },
+        {
+          "addr": "0x0a1b438bcb8a3050d95470cb57487aa48747118f",
+          "balance": "630490740740740153421"
+        },
+        {
+          "addr": "0x351d2b4c021a6be30f39be66c6ce7546ccd02447",
+          "balance": "630187499999999412419"
+        },
+        {
+          "addr": "0x7ff62eb8d96c94b7ef523bb08a1ab56489ed4458",
+          "balance": "568808437531742471240"
+        },
+        {
+          "addr": "0x873006922e4a4140c9be3e19c5cbb293cfbb1571",
+          "balance": "524827584876541772549"
+        },
+        {
+          "addr": "0x536c2604935964d10da36a3011a9dcc4533e0959",
+          "balance": "506030217364326689348"
+        },
+        {
+          "addr": "0x541c746362dce987e6f87d8653cc9cacfb1712b1",
+          "balance": "497243827555554068642"
+        },
+        {
+          "addr": "0xd43cf371b04445164cdcbbb5d1ae15414626ce55",
+          "balance": "471818874334854447212"
+        },
+        {
+          "addr": "0x8178a813dc92bee63ca5255f29bdb45d39b78e1a",
+          "balance": "451827353394750036125"
+        },
+        {
+          "addr": "0x1acea492e78dc5d2ba007ff0a68f55dc4bb05ee9",
+          "balance": "438617137571376473155"
+        },
+        {
+          "addr": "0x3fd1de541b26723addf71da78de23df366dacec4",
+          "balance": "436961366040517596754"
+        },
+        {
+          "addr": "0x398a2acd88d455fa6b85386d9c7440a2d6e85042",
+          "balance": "432401991666666529360"
+        },
+        {
+          "addr": "0xb1f72d694711fce55c62ea97bd3739ff11cef986",
+          "balance": "417110938100525571128"
+        },
+        {
+          "addr": "0x130867afc04071ecd2475cb6727a6a924205c1fd",
+          "balance": "375658295524689291254"
+        },
+        {
+          "addr": "0x9176b3fb8111887f3e654afc8b009fca75501e26",
+          "balance": "346804118425922001869"
+        },
+        {
+          "addr": "0x60929dec08a1956f853a18f018b3920c974ef874",
+          "balance": "311531635802467455860"
+        },
+        {
+          "addr": "0xda2aecfbc9bec8e76a67636f08d11ed24ac58098",
+          "balance": "300786343257167784956"
+        },
+        {
+          "addr": "0xafe2338ddc17fe4f1f56e93085042a7df649abd8",
+          "balance": "300692361331241858692"
+        },
+        {
+          "addr": "0xe2c7d75f50e0b31cda8a52919c8911806fae39e0",
+          "balance": "297832465277777183965"
+        },
+        {
+          "addr": "0xed4c4931fd8617d16731703a0a15b930b760c58b",
+          "balance": "286268750851849247412"
+        },
+        {
+          "addr": "0x5d8e5bc8e7013380987367621e195244c65deba6",
+          "balance": "275086046262243748046"
+        },
+        {
+          "addr": "0x007de57773b6eb4ebbf6a740dfde1efdd5629630",
+          "balance": "274513981562342488571"
+        },
+        {
+          "addr": "0x68cfc7d5c0f0ca20318ab8a0b539f3050428dddd",
+          "balance": "270671958359787796140"
+        },
+        {
+          "addr": "0x7f8be49cba1dfffd1074d3ca8585eb29c14be79d",
+          "balance": "247832638888888106212"
+        },
+        {
+          "addr": "0xb43bc8e4c7c5bc7daa439b9f659128a9fc486e5b",
+          "balance": "242157099753083747169"
+        },
+        {
+          "addr": "0x05c7b6546eda2c34b942e51ee0a671ffdfe2abe2",
+          "balance": "235205058158205646548"
+        },
+        {
+          "addr": "0xa1513231426d6adb1cc616874269e7ee3614f1f5",
+          "balance": "223665972222221428836"
+        },
+        {
+          "addr": "0x6fb35eac81bdc42946d6b9d248b55cc2c4f4a47b",
+          "balance": "206489776155108713349"
+        },
+        {
+          "addr": "0x5c15d2475298b96cb033afc3e6fb4ef575c5490c",
+          "balance": "206379012913577575159"
+        },
+        {
+          "addr": "0x84e74fdac073eefd57bdd84fe05f9fd3c6aa934e",
+          "balance": "202576114442352834998"
+        },
+        {
+          "addr": "0x8b6a881eeeeee550114817dbb802d0c5ed140b86",
+          "balance": "201212731812723116203"
+        },
+        {
+          "addr": "0x664caa685512e56364f1e6cd844ef1ec378c5d86",
+          "balance": "182331105456011884307"
+        },
+        {
+          "addr": "0x659a88d1fc5065126a90ebf908379db1d5c94e37",
+          "balance": "177276124338624385890"
+        },
+        {
+          "addr": "0x5048e247636c715fe2aa26654cfb110076ac539a",
+          "balance": "176702777783065127670"
+        },
+        {
+          "addr": "0x6f3880d41ec7a530dae28eeb61ad6afbbcbd715d",
+          "balance": "172909722222221439560"
+        },
+        {
+          "addr": "0x840647cb127112d0edb9e6c3ce8e0c083b99516a",
+          "balance": "169715799163323598782"
+        },
+        {
+          "addr": "0x86e726c8cb1da72d3b9b79141c5d98cdb8aaf504",
+          "balance": "152000000000000000000"
+        },
+        {
+          "addr": "0xd55965b4d2f883ca69c7e7265ee00227539e3ad6",
+          "balance": "150626240544963517777"
+        },
+        {
+          "addr": "0x4b933cd9e9965be2388aa2b0e26f4104decd9e27",
+          "balance": "133314732915333888729"
+        },
+        {
+          "addr": "0x53e166d95c52a7dd5955b04c4f8a0a975e4b83c9",
+          "balance": "130932208994708305330"
+        },
+        {
+          "addr": "0x22661085082c30ccc826117547f134563cd1ce69",
+          "balance": "126883592937644429648"
+        },
+        {
+          "addr": "0x930c2a3f669323a326db2dbc7ed09d4a0264496d",
+          "balance": "125562662823245994091"
+        },
+        {
+          "addr": "0xbf188ab46c1ca9d9e47a7996d585566eceddaeab",
+          "balance": "124439044204929636526"
+        },
+        {
+          "addr": "0x9ac0ad4ce9178b841077fd25edeb4630d3924f2a",
+          "balance": "119183334086416309897"
+        },
+        {
+          "addr": "0x78fd84c383939f3525b9cad156e7a3143c26a990",
+          "balance": "117750790920801425483"
+        },
+        {
+          "addr": "0x3d7d429a7962d5d082a10558592bb7d29eb9211b",
+          "balance": "110286459326387363363"
+        },
+        {
+          "addr": "0x765d6177d17dc730efd727b29b3f702fcb11da2c",
+          "balance": "104096867094022291096"
+        },
+        {
+          "addr": "0x7ceb9c6d4e07eab5f3eae6ae9bae02582d1d40c7",
+          "balance": "103741319440362311981"
+        },
+        {
+          "addr": "0x78eea61b7e4ed7d66f7b37e170045c3b140aa0f0",
+          "balance": "102613836797703418028"
+        },
+        {
+          "addr": "0x92045cf13ecbf9a4001f1a31f9bb0d36942b6c5a",
+          "balance": "100999999407407523880"
+        },
+        {
+          "addr": "0x30e346f6cf1076d6725c5089d195651d7c2347e9",
+          "balance": "100903763479389805599"
+        },
+        {
+          "addr": "0x74d6c92272cb37863666ecfbba301eee71aecb88",
+          "balance": "100640046294204620149"
+        },
+        {
+          "addr": "0xc6f2b5f6ca11bf9aa177d1159839ca169b354e30",
+          "balance": "100590740738649064696"
+        },
+        {
+          "addr": "0xa6fbe005070a9da5a6399e5c556a7405fcb982ff",
+          "balance": "100533564812723138889"
+        },
+        {
+          "addr": "0xce9393a2d1762317d19cc3bacefc4eaf9a006371",
+          "balance": "92385105726229229294"
+        },
+        {
+          "addr": "0x5a858fdfeb85d800753cb35b7ed254efa7d1f8f2",
+          "balance": "86812606864172912728"
+        },
+        {
+          "addr": "0x231b405c333db6d81adeaadf4c6ff3940ea5db21",
+          "balance": "80138581130508021883"
+        },
+        {
+          "addr": "0x349dd66d555a26d890f6bb996ef1eadf9f65bdd3",
+          "balance": "76211420129626187719"
+        },
+        {
+          "addr": "0x7618b54c873bdc748ab7885b0cfa82b94a80ea00",
+          "balance": "72820934067120424957"
+        },
+        {
+          "addr": "0x662080b785fc5c2d41ad83b42f55674dac7cdf23",
+          "balance": "70440586419753080146"
+        },
+        {
+          "addr": "0x4752a32843b661fedc525c979aaa01fa54d31366",
+          "balance": "67230671291689665980"
+        },
+        {
+          "addr": "0xe373faedd5920fb8885a837ebdc56184b2abba8c",
+          "balance": "63736307867924802715"
+        },
+        {
+          "addr": "0x3eebcaf63b35a6525fd53ae3048e9c9ac4a9988e",
+          "balance": "61902507712490226604"
+        },
+        {
+          "addr": "0xae5499976ffd3e58be47bdd51c787a5201d957f4",
+          "balance": "61294089487581235953"
+        },
+        {
+          "addr": "0xedb0e977a42b63838625248dd7b00c739b1579ae",
+          "balance": "59827569000000000000"
+        },
+        {
+          "addr": "0x1f538708d0706a254787eb2de11437c3288a8eff",
+          "balance": "59780551543209715444"
+        },
+        {
+          "addr": "0xf30205cdc4b0f15ff9334ad6584acb36f7b6c50e",
+          "balance": "56714275634912105563"
+        },
+        {
+          "addr": "0x34c1773711fd443fb6b50e0746c150c417318cb5",
+          "balance": "56418656912956729912"
+        },
+        {
+          "addr": "0x6cfb8e366a8414420f4c6a59b35a9e3717495ce6",
+          "balance": "53024691950614135922"
+        },
+        {
+          "addr": "0x98d463a3f29f259e67176482eb15107f364c7e18",
+          "balance": "50899680681304002880"
+        },
+        {
+          "addr": "0x1cc176bd6c7a58d0261361be9f5fb022bb238366",
+          "balance": "42922812931213370660"
+        },
+        {
+          "addr": "0xaa8a19d6bf655bfa3c448248ad2482d05bab6f98",
+          "balance": "41578951717586655297"
+        },
+        {
+          "addr": "0x3646832e705a1e4f72037458e575eea32cb4a147",
+          "balance": "37000000000000000000"
+        },
+        {
+          "addr": "0x9ca9c36e1ac814277fc6112150c49fb924320a71",
+          "balance": "36924641200592628218"
+        },
+        {
+          "addr": "0xaff0af58143f390c7d4bad7acd68a7b886a85013",
+          "balance": "36619332730963026919"
+        },
+        {
+          "addr": "0xdb099e06e52c611a702840ca986f75662a8bca60",
+          "balance": "33357157783062269436"
+        },
+        {
+          "addr": "0xd23535ddd918eb2e4ab8c07eb1ac427147baab2f",
+          "balance": "32672754628583781794"
+        },
+        {
+          "addr": "0x6b59200e2baead83e2cc408bc429f9c84b2d2882",
+          "balance": "30595621909648206272"
+        },
+        {
+          "addr": "0xe4924f84d834ac103a1fb2774a4c0bc526c7d593",
+          "balance": "27000000000000000000"
+        },
+        {
+          "addr": "0x2bc6a0f3f782df6b1b990d68c6997a1ba68d7e28",
+          "balance": "26797232924969482243"
+        },
+        {
+          "addr": "0x5fdc62e19a5bfdc1b56a7843bf378635eb362e6e",
+          "balance": "25621644370368784360"
+        },
+        {
+          "addr": "0xc2412a7525fc8809211c6d04793c5a4b68199dfb",
+          "balance": "25526207973545757364"
+        },
+        {
+          "addr": "0xf840b508e87e3bb163cf4b85616ef2fa5253758f",
+          "balance": "24714484238094426114"
+        },
+        {
+          "addr": "0xd9b4047ef0c3407e3a3ef3a22beb9f7993f1f346",
+          "balance": "23941579000000000000"
+        },
+        {
+          "addr": "0x58db2937b08713214014d2a579c3088db826fad1",
+          "balance": "23708334012343993670"
+        },
+        {
+          "addr": "0x1cb65c130b3642028e0a08a1f7e13a5b3da91110",
+          "balance": "20812141367699870468"
+        },
+        {
+          "addr": "0x4040f57ea50194dc06c286027b6e7eb5c9f84d24",
+          "balance": "19766204148144197787"
+        },
+        {
+          "addr": "0xf9a99e93be712b1669c401b00640bd9b02626d16",
+          "balance": "18861757170765468524"
+        },
+        {
+          "addr": "0xa42b52479a66bc2c8b6899fd2c20d3823cde0ccd",
+          "balance": "18791033946988527592"
+        },
+        {
+          "addr": "0xab21435c6581f59ee678bffd4845674aa9055962",
+          "balance": "18648920716042647114"
+        },
+        {
+          "addr": "0x915daaaf5c3a2dc5dabfcd2901a9200ac7f219ab",
+          "balance": "18419907407407348294"
+        },
+        {
+          "addr": "0x8d4f1f32e6013aff6041e5f0025b00793d4383a5",
+          "balance": "17280000000000000000"
+        },
+        {
+          "addr": "0x3e0ce31288e5e7359ea25f7755476fb9bbc18785",
+          "balance": "17233920333332386538"
+        },
+        {
+          "addr": "0xbe1d66126a6c9a552dff61e5621dc62631dfb52d",
+          "balance": "16402334103901267174"
+        },
+        {
+          "addr": "0xe7f89bb76ccb6a17db6a2ec815ebbd080229dbad",
+          "balance": "15674555551912175171"
+        },
+        {
+          "addr": "0x1f8eb587ec662a5bfa50f5ae914c9e34f7a84771",
+          "balance": "15160050259253194207"
+        },
+        {
+          "addr": "0x8082ab2f4e220dad92689f3682f3e7a42b206b42",
+          "balance": "13896031910546254141"
+        },
+        {
+          "addr": "0xc5993cc7f835cbe0b0bd91ab520a8b8d1a7333b9",
+          "balance": "11878451174837875144"
+        },
+        {
+          "addr": "0xc0163e58648b247c143023cfb26c2baa42c9d9a9",
+          "balance": "11018919365076986383"
+        },
+        {
+          "addr": "0x02ffb9b4bbc29f9a59b20c541d369c5add62a5a3",
+          "balance": "10731377311703791766"
+        },
+        {
+          "addr": "0x2eac6f61475d516a06b6fb095473a6c05add074a",
+          "balance": "10677454616398476570"
+        },
+        {
+          "addr": "0xfac62d1d557cf9dbb758454849f671a72973f218",
+          "balance": "10000000000000000000"
+        },
+        {
+          "addr": "0x44a9ec6965e4c6e5305c4ff25d1178cb20a4e251",
+          "balance": "9800392511481007347"
+        },
+        {
+          "addr": "0x188e8d0f9136b3b9fe544fdffbe6a94ae2d20f2d",
+          "balance": "9650154087500410658"
+        },
+        {
+          "addr": "0x6452b583aefbb52dd1a614f591bae3ebe0945f72",
+          "balance": "9550234332858453411"
+        },
+        {
+          "addr": "0x0075376f0ba0cb4a44aa5ffb4bce8faa6a13a993",
+          "balance": "9529805863757458044"
+        },
+        {
+          "addr": "0xda61ebabdb6c165d83cf4a8820f5f56035971ae0",
+          "balance": "9526210104845722128"
+        },
+        {
+          "addr": "0xdfc6b64a01e2d977a699d9a2cdecb7651ee49fd3",
+          "balance": "9520142978340385249"
+        },
+        {
+          "addr": "0xa775fc9f84c51f7b3ec19991c08af402614d7c2a",
+          "balance": "9503646835199230648"
+        },
+        {
+          "addr": "0x5415dabe4b709a7553a830aecdee89bfb15954e9",
+          "balance": "9458768284642158357"
+        },
+        {
+          "addr": "0x7f6913e7d97442823cc99cc1523ab463618b780e",
+          "balance": "9411982095988837300"
+        },
+        {
+          "addr": "0xebe1b67abc7d4249ad3a9dd059a1632e10ddf0b5",
+          "balance": "9394693671228757429"
+        },
+        {
+          "addr": "0x597a67afebd39d3cb102eed85279e9fa9e4a717e",
+          "balance": "9205497682514681598"
+        },
+        {
+          "addr": "0x0673e615479b1dee39ed9b2f9f9c8c3840b2375b",
+          "balance": "8918012924377337540"
+        },
+        {
+          "addr": "0x7a47d1b09f16f09dbdac6bbd8faa93628bdcc5bd",
+          "balance": "8785879626959128728"
+        },
+        {
+          "addr": "0x80c013b7f28c098c68d1584863d6b1391214b498",
+          "balance": "8195208330222262516"
+        },
+        {
+          "addr": "0xf4dad0e1fa3e1d4831b895e7b80fb594affb06fd",
+          "balance": "8176280864185969430"
+        },
+        {
+          "addr": "0xc37627dfd24fea68f50fe380b21e369e2b62836a",
+          "balance": "8098981478370411280"
+        },
+        {
+          "addr": "0x5309cfca79c4cdf7d4c8d8289ce082510afbc648",
+          "balance": "7882085812973481692"
+        },
+        {
+          "addr": "0x52905a5e83a83f6a9d0e64ad24e79a37512d35b9",
+          "balance": "7784351849924681392"
+        },
+        {
+          "addr": "0x9f6e81921f99326fe74884796b34e93d5f3fb351",
+          "balance": "7738812123456310660"
+        },
+        {
+          "addr": "0x06cc829736875f074d4d9dae8bb66645b892df91",
+          "balance": "7305283064037072532"
+        },
+        {
+          "addr": "0xa0a64c9959207b41fab5429c0e790591bf242656",
+          "balance": "6996574074074074096"
+        },
+        {
+          "addr": "0x8da0627c45eb456dae07ade6f87d7372040fa4cd",
+          "balance": "6062759107139188779"
+        },
+        {
+          "addr": "0x2bffed064c09de2514160bc77e3c0f602e3df565",
+          "balance": "5839662950098768560"
+        },
+        {
+          "addr": "0x218f1b056585184e736388f4c491682977deefa4",
+          "balance": "5839402147629634568"
+        },
+        {
+          "addr": "0x28114b357de28b561f13952ebd2da5c4a810505e",
+          "balance": "5388828315500692680"
+        },
+        {
+          "addr": "0xe0a0ec8dee2f73943a6b731a2e11484916f45d44",
+          "balance": "5327026227268331757"
+        },
+        {
+          "addr": "0x6ef16ad3d65add38ff9539b3714666c4ce64639a",
+          "balance": "5189754286518523455"
+        },
+        {
+          "addr": "0x9f920a8c3307625aae5fd7e6647ae8a15d959092",
+          "balance": "5000000000000000000"
+        },
+        {
+          "addr": "0xf7f83184267912bf54424333d56d05d7929e1f2e",
+          "balance": "4379363793196835213"
+        },
+        {
+          "addr": "0xa6309be199fa84b2ec5d5f85446dcb2a2c9ba6a5",
+          "balance": "4138127853881277690"
+        },
+        {
+          "addr": "0x29d10eaa263a39214640f4ddbbff8b7bea063d76",
+          "balance": "4086251652444159771"
+        },
+        {
+          "addr": "0xfc8acf3cbbf75fb0e53ccecea657b31723be51fd",
+          "balance": "4000000000000000000"
+        },
+        {
+          "addr": "0xc4fdc34158f50e99358e0af7aef432c1d8761090",
+          "balance": "3920447530864190728"
+        },
+        {
+          "addr": "0xa9fbd8ad796dbd2ccad5a137524f531b6e353fb6",
+          "balance": "3383843709476959797"
+        },
+        {
+          "addr": "0x4609e331021683fc796895f8b3ded337e90df8c7",
+          "balance": "3380659722222213104"
+        },
+        {
+          "addr": "0xc5a659ffcfc79d831a8216a5ec7fd1f5957006d1",
+          "balance": "3223943650330912611"
+        },
+        {
+          "addr": "0x275c4153a9ff5270de24513136e29080fc01739f",
+          "balance": "3112728174603254510"
+        },
+        {
+          "addr": "0xa5563a3c2008632a0955d842bf530396b04b423a",
+          "balance": "3010643034945361351"
+        },
+        {
+          "addr": "0xf54d6f29a19bc8317fe966e0b8a57c28844176b2",
+          "balance": "2972228007703647853"
+        },
+        {
+          "addr": "0x2d9f82af5e986849955eddb372d2ced783e4ac9a",
+          "balance": "2599994367283950702"
+        },
+        {
+          "addr": "0xe53085d26544daf3ba8f66b2d1b108e285cc51f9",
+          "balance": "2594228993827063762"
+        },
+        {
+          "addr": "0x6daf6dc3c8aa3ee860478645205b5f9d6397616d",
+          "balance": "2550732577244988835"
+        },
+        {
+          "addr": "0x09be4b490a9c6cac0548cb0a619297fc39278a7f",
+          "balance": "2328352000000000000"
+        },
+        {
+          "addr": "0xb5959e6689e4fd9271b32659e3894b618b98e0fa",
+          "balance": "2282490460317374044"
+        },
+        {
+          "addr": "0xeb367f6a0ddd531666d778bc096d212a235a6f78",
+          "balance": "2222932291669378501"
+        },
+        {
+          "addr": "0x4937eaf1a88e27089833112aa25dbaa87de9852d",
+          "balance": "1981116752929936647"
+        },
+        {
+          "addr": "0x4c494e8e2e7c2ce6ee301cba08429bca0b5697dc",
+          "balance": "1936187342505618134"
+        },
+        {
+          "addr": "0xec5b48c56ea1b7129781fce613deb03e7fd6d7c2",
+          "balance": "1898719135802463035"
+        },
+        {
+          "addr": "0xc4d0400eeb898953e569b428b3db30819f612e07",
+          "balance": "1878009259259253225"
+        },
+        {
+          "addr": "0xcc468cb0bc5d9c95430879f826b07b62a8c91ded",
+          "balance": "1851651555545739587"
+        },
+        {
+          "addr": "0x024713784f675dd28b5ce07db91a4d47213c2394",
+          "balance": "1773834876543198524"
+        },
+        {
+          "addr": "0x1d9f081bda444671a1212ce5be88ed06bdf6b9e9",
+          "balance": "1754451858527392147"
+        },
+        {
+          "addr": "0xf5e3b43cd8b1bc26c7346cd51d8980dedf87b454",
+          "balance": "1736052312915062160"
+        },
+        {
+          "addr": "0xdd13fbabd1b87b0aacb103e0b81b16c95b284e87",
+          "balance": "1734827314810531557"
+        },
+        {
+          "addr": "0x0a43413bd72cf28b4205ebba14bc04d27c0de863",
+          "balance": "1638125314813727862"
+        },
+        {
+          "addr": "0x244a859fe3d326f5c7f238303d648553e0c92eb7",
+          "balance": "1613035271693452586"
+        },
+        {
+          "addr": "0x2c6a5016ec8024625cb1ecc0487d112c11253fb7",
+          "balance": "1405208453496126428"
+        },
+        {
+          "addr": "0xf820c77a87d0c29b2fc0127d4043c3ac12f7a3c3",
+          "balance": "1342535839171700243"
+        },
+        {
+          "addr": "0xc6204532a1ff2059b33c574d22a3f5a745217aae",
+          "balance": "1278690065556886270"
+        },
+        {
+          "addr": "0xc6c686b80e129e6c83e0adc821b8becdb4b15232",
+          "balance": "1255190402309605170"
+        },
+        {
+          "addr": "0xbda1c295b5fb13304ee8d6aaabcf6ce92311defa",
+          "balance": "1182098765432177991"
+        },
+        {
+          "addr": "0x7f253d2daa8cd16f92143ef925ede671046a2917",
+          "balance": "1169029549382708642"
+        },
+        {
+          "addr": "0xdd074841450231df932b2d6a3a19c761c3c52126",
+          "balance": "1150356479141284044"
+        },
+        {
+          "addr": "0x3ace16b01cd8a2ae65a0c8c756b43f0d54f27c21",
+          "balance": "1087130015431848400"
+        },
+        {
+          "addr": "0x311736fd98d19e9650e823704b9612aa28fe4596",
+          "balance": "1042119129629630934"
+        },
+        {
+          "addr": "0x618ada3f9f7bc1b2f2765ba1728bec5057b3de40",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0x866eb0bc8d301f52b17c59ddd97b8b7cdaa2ec79",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0x928ed03d7b2c59ccf67b0ae9bfadb0ec89bb6582",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0x935e546f11e5df0d96faaf2a9f62007779efab00",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0xa27a5143cc763d83a88d15bd3d4cd483dc6a1d26",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0xbfa8f2a6cc499e841a1c560ce5fdaf2bfb25cfc5",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0xedefd5ba17f3382ad4bdd8022388e53dfd05d58d",
+          "balance": "1000000000000000000"
+        },
+        {
+          "addr": "0xbce6053b60c5913f4190c95f629f473be0e379aa",
+          "balance": "999882716049382960"
+        },
+        {
+          "addr": "0x73ecdd322a0e016c22b411db260c81b97bd5b5dc",
+          "balance": "972289380901820966"
+        },
+        {
+          "addr": "0xe093d8a4269ce5c91cd9389a0646badab2c8d9a3",
+          "balance": "966719267117252449"
+        },
+        {
+          "addr": "0xded56ccff27770e7883c2118ac32a76f12799429",
+          "balance": "949580824155395135"
+        },
+        {
+          "addr": "0x923c0d5dbb0be64eac9c79a7781762b4395f17ce",
+          "balance": "929283067949405494"
+        },
+        {
+          "addr": "0x969a1f7abd0c9fbd197ccafb8c33fa7d086ab3ef",
+          "balance": "833553000000000000"
+        },
+        {
+          "addr": "0x0de29e5fb19a6cf5259b545e9fd97fba8dc21c04",
+          "balance": "778935183093508749"
+        },
+        {
+          "addr": "0xd79682a556967825750910adb8bbb8c8e847f818",
+          "balance": "778706752910268605"
+        },
+        {
+          "addr": "0x8d463f5028767313ab833cc42254276d44d67e9d",
+          "balance": "578009257167583241"
+        },
+        {
+          "addr": "0x996c1f0b6196b7448c1f0bd05cabf9053ed3c75b",
+          "balance": "563314676450971830"
+        },
+        {
+          "addr": "0x7db7370df0b38890ad5427e009c01e1541111007",
+          "balance": "540263534795523561"
+        },
+        {
+          "addr": "0x9c575537691036a8c8675dbc9bcdb12672b8b068",
+          "balance": "515827000000000000"
+        },
+        {
+          "addr": "0xe78dc447d404695541b540f2fbb7682fd24d778b",
+          "balance": "491192110664241542"
+        },
+        {
+          "addr": "0x1a5a73d1a3652d03fc6f6ac7a01a933654403e43",
+          "balance": "483445000000000000"
+        },
+        {
+          "addr": "0x2a8ea5210241dd709fdc85ecea70a7005096ac35",
+          "balance": "478285416667199350"
+        },
+        {
+          "addr": "0xd3a8f72c3ae3e95fdc48e5db507fcb117b63dfd0",
+          "balance": "393124999999989724"
+        },
+        {
+          "addr": "0xfb1626c0311392c62723d06fd3c9160404da0f33",
+          "balance": "319607000000000000"
+        },
+        {
+          "addr": "0x063ef4ceaee76c8db49cb79d7928affedc4f9a18",
+          "balance": "297510672837279682"
+        },
+        {
+          "addr": "0xbe79a6fd39a8e8b0ff7e1af1ea6e264699680584",
+          "balance": "247220163576983280"
+        },
+        {
+          "addr": "0xc89583fa7b84d81fe54c1339ce3feb10de8b4c96",
+          "balance": "195174159712923120"
+        },
+        {
+          "addr": "0x760441180e4be6c58f3d79e327bce96a6b3d667f",
+          "balance": "156487768518442454"
+        },
+        {
+          "addr": "0x791f6aeb0d71fa20a655a2d5c3e9feda91d0fe03",
+          "balance": "147409335529447759"
+        },
+        {
+          "addr": "0x33fe1df4c09e4ddd4e880f9cedd0ae638b048ea9",
+          "balance": "146547350332501954"
+        },
+        {
+          "addr": "0x418ea8e4ab433ae27390874a467a625f65f131b8",
+          "balance": "125365740740740734"
+        },
+        {
+          "addr": "0xb7606270397bfafe7ca1bbbfd5bda2a624cb634f",
+          "balance": "98612412391886506"
+        },
+        {
+          "addr": "0x33231c4171e4d6a864c05b6db61467ec2424efa5",
+          "balance": "80000000000000000"
+        },
+        {
+          "addr": "0xa5754619adfc0f3efbe65b323664335ea64023c8",
+          "balance": "79041005290253624"
+        },
+        {
+          "addr": "0x0571c2fc7b5024f1efbf51f529e45625e63b2ccf",
+          "balance": "51084000000000000"
+        },
+        {
+          "addr": "0xb908c36d6c4c206e5fabb7cd902e4ef54fe0a8d8",
+          "balance": "30000000000000000"
+        },
+        {
+          "addr": "0x1593c0c9aa77a9e288778c23476340ca2df9b8e6",
+          "balance": "14521000000000000"
+        },
+        {
+          "addr": "0xf37299fff09ddb476e029de36f1ad73083916693",
+          "balance": "13406583332800650"
+        },
+        {
+          "addr": "0x2d0cb201efc59f9485831554fa36c4a8e37d22ef",
+          "balance": "10000000000000000"
+        },
+        {
+          "addr": "0xa99f989ca703e63f052a5c1c2dbe705cad4a09c4",
+          "balance": "10000000000000000"
+        },
+        {
+          "addr": "0xee06dffebd423b0f978062e3466251b4ddcc00a6",
+          "balance": "10000000000000000"
+        },
+        {
+          "addr": "0xfa025fb524b41b01d356c3f1c15ab1b753bb7ce8",
+          "balance": "10000000000000000"
+        },
+        {
+          "addr": "0x6aace63636b0d109dd0ac71565409f337ee9aca8",
+          "balance": "6164969135135037"
+        },
+        {
+          "addr": "0x5675c3e2470fa8ba30d648333a8c298e88fe3384",
+          "balance": "4448688271595685"
+        },
+        {
+          "addr": "0x91bce7fafe5f2f6f32e44b14d5d42970115f1d93",
+          "balance": "4356506848797864"
+        },
+        {
+          "addr": "0xc90c8339089c3070f513b36435a28c7917c88ffc",
+          "balance": "3931166666669218"
+        },
+        {
+          "addr": "0xc5f45c57121209fc6a9961138699c9b197d2b14c",
+          "balance": "3425925925925904"
+        },
+        {
+          "addr": "0x16c7bd8c8cd59874fdfe3136632ce63cee7a178f",
+          "balance": "2621000000000000"
+        },
+        {
+          "addr": "0x9c0bdea6565644fe5564d269d6c5b1c3bdf36de5",
+          "balance": "2615740740153042"
+        },
+        {
+          "addr": "0x4a8845df02c6f7d7625cefd887b418e013f56555",
+          "balance": "2060726851863298"
+        },
+        {
+          "addr": "0xc84124d921422348960b8d5ddd132e7a367c2833",
+          "balance": "1100000000000000"
+        },
+        {
+          "addr": "0x3f95a7e449cc4790b895909fb64c2729f8791eed",
+          "balance": "742668696094388"
+        },
+        {
+          "addr": "0xd1c4ac338ca75985411724d2c353aad1052e26fc",
+          "balance": "436770674784110"
+        },
+        {
+          "addr": "0xddfc6af85c01de36690f1679c7671bbe19e7b0e0",
+          "balance": "222095890409100"
+        },
+        {
+          "addr": "0xcf09c3560b7176bffe3700d1a1283fb85eaf85f9",
+          "balance": "176168442414982"
+        },
+        {
+          "addr": "0x95cf065063335ab425a2f0fcc1d86550b41d002b",
+          "balance": "157351852517537"
+        },
+        {
+          "addr": "0x532ae4624f4bf8b04a1562cf9eed104cc7113ef5",
+          "balance": "98414510400988"
+        },
+        {
+          "addr": "0x9416a42bf7c5df461145daed1d9773c3e144cdb3",
+          "balance": "72057331303174"
+        },
+        {
+          "addr": "0xccfbae9378a330c6c66d01412f502e46849c29cf",
+          "balance": "66780821919204"
+        },
+        {
+          "addr": "0x582f19a6934a1d5b04592b4b5418022ba1d78941",
+          "balance": "64249112125500"
+        },
+        {
+          "addr": "0x87c579fc7c5fc68d36820dc1ea715d8f9050e27f",
+          "balance": "63963977676388"
+        },
+        {
+          "addr": "0x742cfe2a1fb49ae444c91b696c771a7b2f65e9f4",
+          "balance": "58172501269836"
+        },
+        {
+          "addr": "0x6d2c2d195bb3a6590b281f5191b299a2c423289a",
+          "balance": "48959411466502"
+        },
+        {
+          "addr": "0x4f3b3399724a461be02037844c6df39fcd8d8faa",
+          "balance": "46067985794754"
+        },
+        {
+          "addr": "0xec4839fa846aa47aee6ad551cd6dcc8c9355bf1c",
+          "balance": "35359715880646"
+        },
+        {
+          "addr": "0xd3ddb4aa7af5d73a1c019bedfcc179006d6c7329",
+          "balance": "27537290714194"
+        },
+        {
+          "addr": "0x0e4c1a58051cbec81bf073debc48950ce9e65a62",
+          "balance": "20636732621580"
+        },
+        {
+          "addr": "0x40bb18f181938acfbb62bac84cc2812376fe817d",
+          "balance": "11242516490100"
+        },
+        {
+          "addr": "0xc330ffe1c50b758b2d8ed09a37eca8313bf53c81",
+          "balance": "8587519025502"
+        },
+        {
+          "addr": "0x14008f25de5a57c9a6c5c64d8275e99b8001138b",
+          "balance": "7375443935758"
+        },
+        {
+          "addr": "0x2b2bbd94adb79d34deb5b3e6efcf97747b4ae0b5",
+          "balance": "5084622571281"
+        },
+        {
+          "addr": "0xfac1da4a562eea7a21981776de65a1790235ed86",
+          "balance": "999999988894"
+        },
+        {
+          "addr": "0x6bf642e0c535e41fbf52489731b59762c65a1b9b",
+          "balance": "999999967647"
+        },
+        {
+          "addr": "0xabd9de75199fd89b5c52cb19288edd9d88647851",
+          "balance": "999999874128"
+        },
+        {
+          "addr": "0xa7dd575c6d97136b4cc58e725cd68d679b34b081",
+          "balance": "999600000000"
+        },
+        {
+          "addr": "0xccc3ac360ffaf97ffd1fd274c60da04debebe099",
+          "balance": "994709746376"
+        },
+        {
+          "addr": "0x7043d0c230c99d13f18f459f4e877788f2430a00",
+          "balance": "978835944712"
+        },
+        {
+          "addr": "0x8f8c4f8c15f41cfd97ea6d386703851153f85817",
+          "balance": "978835896240"
+        },
+        {
+          "addr": "0xffca27d1cc2f84ad9f1d54ba571f28bd3398f838",
+          "balance": "964521294929"
+        },
+        {
+          "addr": "0xab3101c12d8104b4bfb282c6b94e93422d6003a2",
+          "balance": "962962887094"
+        },
+        {
+          "addr": "0xc94f7c46a80e2247b9afaf4df4993aa1a102d84a",
+          "balance": "962962837084"
+        },
+        {
+          "addr": "0xb7d429e5446a324374309a63b13ce538f962c99c",
+          "balance": "925925737116"
+        },
+        {
+          "addr": "0x419d36f006ba8933ffb99b5bc8d189505c0836d3",
+          "balance": "925924589320"
+        },
+        {
+          "addr": "0xb11f3d283f3c03e2fa620942695302ceab7f3fd4",
+          "balance": "896605008601"
+        },
+        {
+          "addr": "0x3bd13e5254b6d0dee77b7b9cb6328eb59ea058bc",
+          "balance": "891425673294"
+        },
+        {
+          "addr": "0x4442b1f594e6cf47fad51c5ecb3d977f6ec7a66d",
+          "balance": "888888889004"
+        },
+        {
+          "addr": "0xec33f59de19705dfff8c26a3b21398fb52c938b1",
+          "balance": "888888783335"
+        },
+        {
+          "addr": "0xcd426623a98e22e76758a98f7a85d4499973b37f",
+          "balance": "888888492155"
+        },
+        {
+          "addr": "0x1ff7b9e3930f44e72f69fac2a1089b59f37d06a5",
+          "balance": "851851855446"
+        },
+        {
+          "addr": "0x794e3d0994b644fc8d28224b782e082b063e0b39",
+          "balance": "851851776483"
+        },
+        {
+          "addr": "0xc784d1c87688531a742c3c005017dfa6141e0e4f",
+          "balance": "851851647600"
+        },
+        {
+          "addr": "0xe27ee5f7bbaf3f6faa29cfe5d4d1cebe28042b81",
+          "balance": "851848200390"
+        },
+        {
+          "addr": "0xab8693edb8b9db1ca93d8a4399f8ad23ab44357e",
+          "balance": "844130681914"
+        },
+        {
+          "addr": "0x9e9745513c1d3b34e6f3b62f9ddab8a929886671",
+          "balance": "833332577986"
+        },
+        {
+          "addr": "0x71eafd608846850c18063cedea9a8d1b42c24552",
+          "balance": "830687796902"
+        },
+        {
+          "addr": "0x0f9ba28a81942478fdc8feab068a24976efb8678",
+          "balance": "830687744013"
+        },
+        {
+          "addr": "0x273e202bd6ea76bcb6d22f4f8b5bf9dc14ab9925",
+          "balance": "809521154282"
+        },
+        {
+          "addr": "0x8b8d330b1266023ae8c25f42cd4a3c74bdeeba1d",
+          "balance": "796295658070"
+        },
+        {
+          "addr": "0x3b31fb8f7f9681cf03cbac266a50c4155b8bbb0d",
+          "balance": "777777778871"
+        },
+        {
+          "addr": "0xa609eedd14caa6b01ce2058fd96be2112d717a04",
+          "balance": "767195684822"
+        },
+        {
+          "addr": "0x82ffe30dead96814a99bb7d98f7696ba30083120",
+          "balance": "759258755662"
+        },
+        {
+          "addr": "0xe0dc2819d74aca215550d53fe569bb0a4e9ab4c4",
+          "balance": "756169425455"
+        },
+        {
+          "addr": "0x8f17f066cbf9e734c72d22eb147bd718040518b3",
+          "balance": "748037679280"
+        },
+        {
+          "addr": "0x6ccd2473978c74b97363463a58210e855c856f67",
+          "balance": "740740674559"
+        },
+        {
+          "addr": "0x06f398ce76acc1fce97b7cab0eb2a96ba9230c9b",
+          "balance": "716049441688"
+        },
+        {
+          "addr": "0xdccf49fe72d152ef9e3239191f88b7c366885399",
+          "balance": "703703738648"
+        },
+        {
+          "addr": "0x2638a06f95ee408bdfc43fb98b8c040af78b7073",
+          "balance": "703703701545"
+        },
+        {
+          "addr": "0x17fe4ed21e35b5ad800179b0c20447ca3f5280db",
+          "balance": "696757029528"
+        },
+        {
+          "addr": "0xb1101c790731f62bd06cc5e91551fa523a20330d",
+          "balance": "688268522485"
+        },
+        {
+          "addr": "0xa947550684efdc89f85bf1fe4ccd8bc18c0a765c",
+          "balance": "687830130246"
+        },
+        {
+          "addr": "0xb8110d5f2c76a2c8f7368bd0e291b7b8f5d82e70",
+          "balance": "679012347426"
+        },
+        {
+          "addr": "0x1c6d4880275abd31c350ef59ba6fe53ab72f383d",
+          "balance": "679009830917"
+        },
+        {
+          "addr": "0x5d8586d79e446a154a2715c3e0855f86bfdf8d08",
+          "balance": "666665848324"
+        },
+        {
+          "addr": "0x0237e96d6128a19a179ce4bc929ca451251b8b2d",
+          "balance": "666663348200"
+        },
+        {
+          "addr": "0xeeffe719b53fc5961bf24918ef93703391a98687",
+          "balance": "665386997905"
+        },
+        {
+          "addr": "0x98173d41603a1ca46326f2f4e06bfef7e16df544",
+          "balance": "648149485348"
+        },
+        {
+          "addr": "0x6e52a3f199b9e2da6f9bce4a395cb015a0c737d9",
+          "balance": "648148252142"
+        },
+        {
+          "addr": "0xd307ebcd6bc085939ecca4b7350b4d8a32335ad4",
+          "balance": "641975307982"
+        },
+        {
+          "addr": "0xf61c0aea9a871f04875e39735fb3587908afa34c",
+          "balance": "624338396750"
+        },
+        {
+          "addr": "0x20d3bfe573ec5523fe6372df854868cf7cf03bc5",
+          "balance": "592592597428"
+        },
+        {
+          "addr": "0x3a543124ac04a6d981809df6d8576cab96addea7",
+          "balance": "592592476120"
+        },
+        {
+          "addr": "0xbedd3062a3bde463b22d01bb985401729d556a8d",
+          "balance": "555555555584"
+        },
+        {
+          "addr": "0x3d382b9f250d6974d9b011b7c270208632d261ef",
+          "balance": "555555366736"
+        },
+        {
+          "addr": "0x1ede7ad9327344a116e1cb09d328fab41efa0011",
+          "balance": "550264523077"
+        },
+        {
+          "addr": "0x7cd001f00f0b160b5d17234f6346e55d9b0f2b9f",
+          "balance": "546297449560"
+        },
+        {
+          "addr": "0xe7804c208313ae87029dcb2e4e15d6f193eec51f",
+          "balance": "537036974098"
+        },
+        {
+          "addr": "0x5f73a24771940b8c80b3570694072f606df913cc",
+          "balance": "515723874474"
+        },
+        {
+          "addr": "0xa4cda4211cdda152d67226f6069ea812d65de825",
+          "balance": "507936413462"
+        },
+        {
+          "addr": "0xe2336c36723926eb050767b04c9ff8d32af0847e",
+          "balance": "506172712216"
+        },
+        {
+          "addr": "0x09b6edfa9a7aa314347706d0892accc8e286b3b6",
+          "balance": "500001690745"
+        },
+        {
+          "addr": "0xd9a7b5ba79fa7135a93d695685e56bf343d06e74",
+          "balance": "481481441165"
+        },
+        {
+          "addr": "0x8262267b55ab184f6b303e7e1ef260dc5165b5bf",
+          "balance": "481479617120"
+        },
+        {
+          "addr": "0x9d7894ed2ddb65e0ca36fe872cbb57b8e9aaddac",
+          "balance": "475634850591"
+        },
+        {
+          "addr": "0xc56d259476f11e8a37f3a00cd0d09953c08bb686",
+          "balance": "469137489596"
+        },
+        {
+          "addr": "0xe8cd4cb68dd4c79d118368f36d8564f3134c180d",
+          "balance": "469135033928"
+        },
+        {
+          "addr": "0x2940190fdb5770354375994dc17a7c74507666f2",
+          "balance": "452055603712"
+        },
+        {
+          "addr": "0x85be28f0df2d5ec868dc9235da72a0edd8779c97",
+          "balance": "444444003780"
+        },
+        {
+          "addr": "0x135ba7f14db39f76e53f463f753472f4a029a6e7",
+          "balance": "439274895460"
+        },
+        {
+          "addr": "0xebc03adc6cac818a792b91740c300979214f372b",
+          "balance": "419751586214"
+        },
+        {
+          "addr": "0xeff775016953a5a2eaf70973d2226b810b9ed8ce",
+          "balance": "407407402572"
+        },
+        {
+          "addr": "0x4ff3d20ed3e7247001537de12178080d44c9074d",
+          "balance": "395061710901"
+        },
+        {
+          "addr": "0x3f753bad8d612c9afeccba1b7d5f84a339071f6b",
+          "balance": "381170630828"
+        },
+        {
+          "addr": "0x5c5973420f24d14d0b50d9f178ba6a9bfee88c8b",
+          "balance": "373456828671"
+        },
+        {
+          "addr": "0x324b4bd430b69bc0de5fc9c0d68acb7ffb23653f",
+          "balance": "370370377698"
+        },
+        {
+          "addr": "0x127728662484caaf377f57c6a497ee14e8d21dbc",
+          "balance": "370370307432"
+        },
+        {
+          "addr": "0xc2c321575392e05ca99191c261d8b52ff4b715e6",
+          "balance": "333333727819"
+        },
+        {
+          "addr": "0x5f899ea76c58f34e6af2fc2f77b443dd8b09b3d5",
+          "balance": "333333384031"
+        },
+        {
+          "addr": "0xcf99418b37ffa0fc42d9c182b987947c9fcc50c8",
+          "balance": "333333333860"
+        },
+        {
+          "addr": "0xb433b33d26fd1c9484e142f76dcee106c64421f6",
+          "balance": "333333081580"
+        },
+        {
+          "addr": "0x7d9e4925e6ef053daff48c735eae2f240b001be2",
+          "balance": "322751261478"
+        },
+        {
+          "addr": "0xfc45c86628eaf39264d090741990dc1804a2852a",
+          "balance": "314814374238"
+        },
+        {
+          "addr": "0xd5db7f329d78dccc31d1394c4db884a575e18801",
+          "balance": "312169869754"
+        },
+        {
+          "addr": "0xceff98a045a3732f3e26247a29ba5e7d52fe84b2",
+          "balance": "311731477515"
+        },
+        {
+          "addr": "0x0a5729780099ba17ce756e63868844fc7ec9ba79",
+          "balance": "285889549335"
+        },
+        {
+          "addr": "0x8f4eebaba8e593e7cfe6addf323fa22a444ae215",
+          "balance": "283950594999"
+        },
+        {
+          "addr": "0xf094ab7fa82b187308443629fdf7dfa1c36b34cf",
+          "balance": "277777723980"
+        },
+        {
+          "addr": "0x9f3b02578cd517880dd5ad17b438581ed5d7b612",
+          "balance": "277777463090"
+        },
+        {
+          "addr": "0x1f04a1b8c170bcb084b84a8d6c013322545de555",
+          "balance": "264550198661"
+        },
+        {
+          "addr": "0xf5189b377294bb05e270fc580ceee15ecf3fde23",
+          "balance": "259259231983"
+        },
+        {
+          "addr": "0x0f54293e590ea6ef6428246170a5b93f07156dc5",
+          "balance": "259259196320"
+        },
+        {
+          "addr": "0xde88d54819c4ae692fbb8f5f914ac5723951ee65",
+          "balance": "240740735406"
+        },
+        {
+          "addr": "0xe5ce388094228aac076455ee4b06ab6acd5839fe",
+          "balance": "240740614870"
+        },
+        {
+          "addr": "0x2ca997813d4e6a42cf47b2e3a001f8da648527de",
+          "balance": "191357464590"
+        },
+        {
+          "addr": "0x0331969e189d63fbc31d771bb04ab44227d748d8",
+          "balance": "155869318086"
+        },
+        {
+          "addr": "0x0cb9cd99dbc614d9a0b31c9014185dfbbe392eb5",
+          "balance": "154320473271"
+        },
+        {
+          "addr": "0x7db915d96553544c2196f10d16ac0860bdf2cfbe",
+          "balance": "148148223517"
+        },
+        {
+          "addr": "0xf75cc6765230caf9dcaf1a75812d883cd05c28c4",
+          "balance": "148148144554"
+        },
+        {
+          "addr": "0xe94d152db3b9dccf38d8f8f5c83ed57f4c63061f",
+          "balance": "148147833452"
+        },
+        {
+          "addr": "0x1b2bf24d829dfc6402a1ecf93884f5772fea3f0e",
+          "balance": "134920568765"
+        },
+        {
+          "addr": "0x62164fecee6248d16a3b4994664c3021666d7bab",
+          "balance": "129629566690"
+        },
+        {
+          "addr": "0xe9d21eba2ef52b5d4f0bc8f3adcb5f9e87768c82",
+          "balance": "129629123704"
+        },
+        {
+          "addr": "0xd0b5d90435b36099a82a633447ed5383c4923625",
+          "balance": "123455577520"
+        },
+        {
+          "addr": "0x8f457cf305e39200c92986e00790633b9d648fef",
+          "balance": "121693087166"
+        },
+        {
+          "addr": "0x470edc8138152093b6a3d9d954642328a8b0cb4d",
+          "balance": "111110670560"
+        },
+        {
+          "addr": "0x713996bb0e138f3b72f67baa9dc162dcccae132f",
+          "balance": "105820106388"
+        },
+        {
+          "addr": "0x3b7f9bc76825dd128d90dc38c1df5742b120173f",
+          "balance": "92592466670"
+        },
+        {
+          "addr": "0x164cb16af99216622b8365e4dec56f613732e049",
+          "balance": "74073987556"
+        },
+        {
+          "addr": "0x6863cd55cf68149bfe70d6abcec15856349a1042",
+          "balance": "74073441712"
+        },
+        {
+          "addr": "0x5445b27eeea00f196bb933da26937c809746a003",
+          "balance": "69870392293"
+        },
+        {
+          "addr": "0x97f0978c18de9b61840d4627040aea796090343f",
+          "balance": "62541677143"
+        },
+        {
+          "addr": "0xac6a677ed1eef88ef2d6d9a15b0b965b257da819",
+          "balance": "37037043958"
+        },
+        {
+          "addr": "0x8c6aa73dca61580d6ed2e0ea2f5e9a3cbe79ed7a",
+          "balance": "37037033198"
+        },
+        {
+          "addr": "0xff4c05da2ab5315ad4bc4af37e56532d7efaa1e3",
+          "balance": "37036722348"
+        },
+        {
+          "addr": "0x7e07431018cc6ee6896a9f790714b701b907e63a",
+          "balance": "37036722308"
+        },
+        {
+          "addr": "0xd63154abc9c6655626f16f0aed41c2e958410724",
+          "balance": "22639332887"
+        },
+        {
+          "addr": "0x0c9d97e6b7c73eb3a082497cd077c20304887777",
+          "balance": "109631"
+        },
+        {
+          "addr": "0x93d2d0812c9856141b080e9ef6e97c7a7b342d7f",
+          "balance": "26301"
+        },
+        {
+          "addr": "0xd89feb1b6789f15f09eaa4c1cc24c4d69e8b0def",
+          "balance": "11106"
+        },
+        {
+          "addr": "0xf6a03fcf12cdc8066afaf12255105ca301e15ba6",
+          "balance": "134"
+        },
+        {
+          "addr": "0x3941e2e89f7047e0ac7b9cce18fbe90927a32100",
+          "balance": "64"
+        }
+      ]
+    },
+    {
+      "symbol": "WBTCx",
+      "token": "0x4086ebf75233e8492f1bcda41c7f2a8288c2fb92",
+      "deployment_block": 12122910,
+      "touched_addresses": 0,
+      "victims": []
+    }
+  ],
+  "summary": {
+    "DAIx": {
+      "token": "0x1305f6b6df9dc47159d12eb7ac2804d4a33173c2",
+      "deployment_block": 12122878,
+      "touched_addresses": 4755,
+      "holder_count": 90,
+      "top_holder": "0xb7933cef895c36f2cec093973c6cd15c6365e568",
+      "top_balance": "1850506944444443793066"
+    },
+    "ETHx": {
+      "token": "0x27e1e4e6bc79d93032abef01025811b7e4727e85",
+      "deployment_block": 12122800,
+      "touched_addresses": 4140,
+      "holder_count": 105,
+      "top_holder": "0x17fe4ed21e35b5ad800179b0c20447ca3f5280db",
+      "top_balance": "1365167393057629608"
+    },
+    "MATICx": {
+      "token": "0x3ad736904e9e65189c3000c7dd2c8ac8bb7cd4e3",
+      "deployment_block": 11651904,
+      "touched_addresses": 0,
+      "holder_count": 0,
+      "top_holder": null,
+      "top_balance": "0"
+    },
+    "USDCx": {
+      "token": "0xcaa7349cea390f89641fe306d93591f87595dc1f",
+      "deployment_block": 12122841,
+      "touched_addresses": 7873,
+      "holder_count": 383,
+      "top_holder": "0x6583f33895b538dfdeee234f2d34df1033655de1",
+      "top_balance": "163471604381317834797300"
+    },
+    "WBTCx": {
+      "token": "0x4086ebf75233e8492f1bcda41c7f2a8288c2fb92",
+      "deployment_block": 12122910,
+      "touched_addresses": 0,
+      "holder_count": 0,
+      "top_holder": null,
+      "top_balance": "0"
+    }
+  },
+  "scan_strategy": {
+    "recent_window_start": 24184693,
+    "recent_window_end": 24684693,
+    "deployment_window_size": 50000
+  }
+}

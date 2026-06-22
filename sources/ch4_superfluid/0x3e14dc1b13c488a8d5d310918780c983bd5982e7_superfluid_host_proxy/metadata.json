@@ -1,0 +1,25 @@
+{
+  "address": "0x3E14dC1b13c488a8d5D310918780c983bD5982E7",
+  "label": "superfluid_host_proxy",
+  "chain": "polygon",
+  "chain_id": 137,
+  "contract_name": "UUPSProxy",
+  "compiler_version": "v0.7.6+commit.7338295f",
+  "optimization_used": "1",
+  "runs": "200",
+  "constructor_arguments": "",
+  "evm_version": "Default",
+  "license_type": "",
+  "proxy": "1",
+  "implementation": "0x372b31667c9ae399ff4e57c5ee0c500386681a93",
+  "swarm_source": "",
+  "similar_match": "",
+  "contract_file_name": null,
+  "source_format": "solidity-standard-json",
+  "source_files": [
+    "@openzeppelin/contracts/proxy/Proxy.sol",
+    "Users/logic/ethereum/superfluid/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSProxy.sol",
+    "Users/logic/ethereum/superfluid/protocol-monorepo/packages/ethereum-contracts/contracts/upgradability/UUPSUtils.sol"
+  ],
+  "note": null
+}

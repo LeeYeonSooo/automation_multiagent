@@ -1,0 +1,86 @@
+# {Challenge Name} — Exploit Report
+
+**Author**: Claude Code (brain) × Codex (hands)
+**Date**: {YYYY-MM-DD}
+**Challenge**: {chN_name}
+**Status**: {exploited | abandoned}
+
+---
+
+## 1. TL;DR
+
+- **Vulnerability**: {one-line summary}
+- **Technique**: {attack vector name}
+- **Final native delta**: {X} {ETH/POL/BNB}
+- **Estimated score**: {Y} / {max} pts
+- **Attempts**: {N} (of which {M} failed)
+
+---
+
+## 2. Root Cause Analysis
+
+### 2.1 Code-level bug
+{file:line snippet}
+
+### 2.2 Why the developers wrote it this way (inferred intent)
+{fork assumption, refactor error, etc.}
+
+### 2.3 Architectural antipattern
+{cross-cutting pattern from knowledge/vuln_db.md categorization: e.g., "trusted data in untrusted transport"}
+
+---
+
+## 3. Attack Reproduction
+
+### 3.1 Preconditions
+{fork block, initial balances, victim state}
+
+### 3.2 Full chain (numbered)
+1. ...
+2. ...
+
+### 3.3 Final numeric parameters
+{iter count, swap size, min_out thresholds, gas estimate}
+
+### 3.4 PoC file
+`challenges/{ch}/poc/Attempt{N}.t.sol` — last passing attempt
+`challenges/{ch}/exploits/successful/Run_v{K}_{desc}.s.sol` — archived broadcast script
+
+---
+
+## 4. Failed Attempts
+
+> **Assignment C rule**: every failed hypothesis is graded material. Include all of them.
+
+### 4.1 Attempt 1: {hypothesis name}
+- **Hypothesis**: {1-2 sentences}
+- **What I tried**: {summary}
+- **Why it failed**: {concrete revert / miscalculation}
+- **Lesson**: {insight carried forward}
+
+{repeat per attempt}
+
+---
+
+## 5. Better Patch Suggestion
+
+### 5.1 Current patch status
+{if protocol patched: cite commit; else: "no patch applied"}
+
+### 5.2 Proposed patch
+```solidity
+{code diff}
+```
+
+### 5.3 Why this is better than the minimal fix
+{reasoning; cite the category in knowledge/vuln_db.md}
+
+---
+
+## Appendix A: All attempt logs
+- `challenges/{ch}/runs/attempt1.log` — {summary line}
+- ...
+
+## Appendix B: Related prior incidents
+- {rekt.news link}
+- {same-technique attack on sibling protocol, if any}

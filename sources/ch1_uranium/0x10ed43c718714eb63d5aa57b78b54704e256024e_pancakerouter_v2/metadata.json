@@ -1,0 +1,21 @@
+{
+  "label": "PancakeRouter_V2",
+  "address": "0x10ED43C718714eb63d5aA57B78B54704E256024E",
+  "chain": "bsc",
+  "chain_id": 56,
+  "contract_name": "PancakeRouter",
+  "compiler_version": "v0.6.6+commit.6c089d02",
+  "compiler_type": "solc",
+  "optimizer_enabled": true,
+  "optimizer_runs": 999999,
+  "evm_version": "Default",
+  "libraries": {},
+  "license_type": "MIT",
+  "proxy": false,
+  "proxy_implementation": null,
+  "verified": true,
+  "source_layout": "single_file",
+  "source_files": [
+    "PancakeRouter.sol"
+  ]
+}

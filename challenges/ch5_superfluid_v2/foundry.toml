@@ -1,0 +1,26 @@
+# Foundry config for ch5_superfluid_v2
+# Generated from templates/foundry.toml.template (2026-04-18)
+
+[profile.default]
+src = "exploit"
+test = "poc"
+out = "out"
+cache_path = "cache"
+solc_version = "0.8.23"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+fs_permissions = [{ access = "read-write", path = "./" }]
+# TODO: pin after recon (Polygon patched fork)
+
+[rpc_endpoints]
+ch5 = "${RPC_CH5_SUPERFLUID_V2}"
+# Chain-name alias for convenience matching reference/IDAUsage_t.sol style:
+polygon = "${RPC_CH5_SUPERFLUID_V2}"
+
+[fmt]
+line_length = 120
+tab_width = 4
+
+[fuzz]
+runs = 32

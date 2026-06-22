@@ -1,0 +1,23 @@
+{
+  "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+  "label": "wmatic",
+  "chain": "polygon",
+  "chain_id": 137,
+  "contract_name": "WMATIC",
+  "compiler_version": "v0.4.26+commit.4563c3fc",
+  "optimization_used": "0",
+  "runs": "200",
+  "constructor_arguments": "",
+  "evm_version": "Default",
+  "license_type": "MIT",
+  "proxy": "0",
+  "implementation": "",
+  "swarm_source": "bzzr://542a8ec005ed0670e68d75da3b4bb56d7107a6d7a849b4f35b6ca6c3f2d743ac",
+  "similar_match": "",
+  "contract_file_name": null,
+  "source_format": "single-file",
+  "source_files": [
+    "WMATIC.sol"
+  ],
+  "note": null
+}

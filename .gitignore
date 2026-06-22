@@ -1,0 +1,51 @@
+.env
+*.env.local
+logs/
+shared/inbox/
+challenges/*/runs/*.log
+challenges/*/runs/*.json
+!challenges/*/runs/.gitkeep
+challenges/*/recon/abis/*.json
+!challenges/*/recon/abis/.gitkeep
+challenges/*/poc/cache/
+challenges/*/poc/out/
+challenges/*/poc/lib/
+challenges/*/exploit/cache/
+challenges/*/exploit/out/
+challenges/*/exploit/lib/
+**/cache/
+**/out/
+.DS_Store
+*.swp
+node_modules/
+__pycache__/
+*.pyc
+.python-version
+
+# 임시 파일
+*.tmp
+*.bak
+
+# tmux pipe 출력
+*.tmux.log
+
+# foundry libs / 내장 git repo 제외
+for_test/fei-rari/exploit/
+for_test/superfluid_e2/exploit/
+for_test/superfluid_e2/exploit/lib/forge-std/
+for_test/fei-rari/exploit/lib/forge-std/
+challenges/ch3_feirari/lib/forge-std/
+challenges/ch1_uranium/lib/forge-std/
+challenges/ch2_harvest/lib/forge-std/
+challenges/ch5_superfluid_v2/lib/forge-std/
+challenges/ch4_superfluid/lib/forge-std/
+
+# 공개 제외: env 템플릿(실키 포함) + foundry forge-std 전부
+.env.template
+.env.example
+.env.local
+**/forge-std/
+forge-std/
+
+challenges/*/lib/forge-std
+**/lib/forge-std

@@ -1,0 +1,16 @@
+{
+  "challenge": "ch1_uranium",
+  "state": "exploited",
+  "current_attempt": 11,
+  "balance_delta_wei": "10000000000000000000",
+  "last_update": "2026-04-21T00:19:12Z",
+  "needs_human": false,
+  "active_hypothesis": "From the clean block-6919826 baseline, replaying the validated 335-transaction Uranium bundle with EIP-1559 priorityFee=0 and maxFeePerGas raised to the live RPC quote still reproduces the large positive native delta from nonce 0 without needing any new exploit logic.",
+  "dead_ends": [
+    "Attempt 4: at block 6920407 the factory still exposes 23 Uranium pairs, but the residual sweep now projects only 360371878 wei of gross native output versus 9575534076604272 wei of gas at 1.000000008 gwei (breakeven_safety ~= 3.76e-8). There are no profitable untouched pairs left, so broadcast is economically forbidden.",
+    "Attempt 5 residual tail: U92, tiny U235, MASH, and NOMU remain after the profitable recovery passes. They are unsupported or uneconomic on the current fork state, so further cleanup would spend more gas and operational effort than the remaining routable value is worth.",
+    "Attempt 7 tail replay: after re-running pass 1 and replaying passes 2-3 plus the first five pass-4 transactions and the saved resumeAfterPair1 recovery bundle, the current balance reached 110018968230480198657487 wei. Replaying the remaining tail of run-1776542538168 from nonce 335 is a DEAD_END on the recovered state: the saved transactions revert with UraniumSwap: INSUFFICIENT_INPUT_AMOUNT / INSUFFICIENT_LIQUIDITY and missing-token transfer failures, so continuing that tail only burns gas.",
+    "Attempt 11 residual factory check: after the successful replay, the only replay-omitted Uranium pairs with nonzero reserves are U235/WBNB and U235/BUSD. Routing their full missed-side reserves through Pancake yields only about 55218142794737 wei of WBNB-equivalent, while even an 800000-gas follow-up at the live 1875889635 wei quote would cost 1500711708000000 wei. XRP/BUSD is already zero, so the missed-pair tail is net-negative and should not be touched."
+  ],
+  "notes": "Attempt 11 replayed the validated pass1 -> pass2 -> pass3 -> pass4(head only) -> resumeAfterPair1 bundle from the clean 10 BNB / nonce 0 baseline using EIP-1559 priorityFee=0 and maxFeePerGas=1875889635 wei, matching the live RPC quote. Final verified balance is 110018988101313403643368 wei (+110008988101313403643368 over baseline). Factory re-check confirms 23 Uranium pairs and zero tracked ERC20 balances on the EOA; the only omitted nonzero pairs are tiny U235 tails that are net-negative to pursue."
+}

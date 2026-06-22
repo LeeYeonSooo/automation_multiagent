@@ -1,0 +1,202 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+
+interface ISuperAgreement {}
+
+interface ISuperfluidHost {
+    function callAgreement(
+        ISuperAgreement agreementClass,
+        bytes calldata callData,
+        bytes calldata userData
+    ) external returns (bytes memory returnedData);
+}
+
+interface IInstantDistributionAgreementV1 is ISuperAgreement {
+    function claim(
+        address token,
+        address publisher,
+        uint32 indexId,
+        address subscriber,
+        bytes calldata ctx
+    ) external returns (bytes memory newCtx);
+
+    function getSubscription(
+        address token,
+        address publisher,
+        uint32 indexId,
+        address subscriber
+    ) external view returns (bool exist, bool approved, uint128 units, uint256 pendingDistribution);
+}
+
+interface ISuperTokenLike {
+    function balanceOf(address account) external view returns (uint256);
+
+    function realtimeBalanceOfNow(address account)
+        external
+        view
+        returns (int256 availableBalance, uint256 deposit, uint256 owedDeposit, uint256 timestamp);
+}
+
+/// @title Attempt29
+/// @notice Hypothesis: on the ch5 fork, `claim()` can push the publisher
+///         negative through `token.settleBalance(publisher, -pendingDistribution)`
+///         and thus overpay the subscriber.
+/// @dev This follows the same top-level host-call pattern as
+///      `reference/IDAUsage_t.sol`: `HOST.callAgreement(IDA, abi.encodeCall(...), "")`.
+///      The diagnostic target is the user's signed-accounting question:
+///      whether `settleBalance()` alone is enough to make a publisher insolvent
+///      on live tuples where `pendingDistribution` is large.
+/// @dev The public source pairs the publisher debit with
+///      `_adjustPublisherDeposit(..., -pendingDistribution)`, so the concrete
+///      thing to test is whether the fork releases deposit 1:1 with the claim
+///      and leaves the publisher's spendable balance unchanged even when
+///      `pendingDistribution > balanceOf(publisher)`.
+contract Attempt29 is Test {
+    uint256 internal constant FORK_BLOCK = 27_039_967;
+
+    address internal constant ATTACKER = 0xc943eDB4Bb4439d65B81f2f60Bc698411e910B14;
+    address internal constant HOST_ADDR = 0x3E14dC1b13c488a8d5D310918780c983bD5982E7;
+    address internal constant IDA_ADDR = 0xB0aABBA4B2783A72C52956CDEF62d438ecA2d7a1;
+    address internal constant MATICX_ADDR = 0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3;
+
+    address internal constant CONTROL_PUBLISHER = 0xcaB28480ab5c1E133e9B7FC67E030B8DCC2A1d24;
+    address internal constant EXTREME_PUBLISHER = 0x87588653F2F840Bf0589d5715679Db77d8fC021d;
+    address internal constant SHARED_SUBSCRIBER = 0x9C6B5FdC145912dfe6eE13A667aF3C5Eb07CbB89;
+
+    uint32 internal constant INDEX_ID = 1;
+
+    uint256 internal constant CONTROL_PENDING = 89_179_336_596_046_560;
+    uint256 internal constant EXTREME_PENDING = 420_137_098_040_094_820;
+
+    ISuperfluidHost internal constant HOST = ISuperfluidHost(HOST_ADDR);
+    IInstantDistributionAgreementV1 internal constant IDA = IInstantDistributionAgreementV1(IDA_ADDR);
+    ISuperTokenLike internal constant MATICX = ISuperTokenLike(MATICX_ADDR);
+
+    struct Snapshot {
+        int256 availableBalance;
+        uint256 deposit;
+        uint256 owedDeposit;
+        uint256 timestamp;
+        uint256 erc20Balance;
+    }
+
+    function setUp() public {
+        vm.createSelectFork("ch5", FORK_BLOCK);
+
+        vm.label(ATTACKER, "Attacker");
+        vm.label(HOST_ADDR, "SuperfluidHost");
+        vm.label(IDA_ADDR, "IDA");
+        vm.label(MATICX_ADDR, "MATICx");
+        vm.label(CONTROL_PUBLISHER, "ControlPublisher");
+        vm.label(EXTREME_PUBLISHER, "ExtremePublisher");
+        vm.label(SHARED_SUBSCRIBER, "SharedSubscriber");
+    }
+
+    function test_claim_releases_matching_deposit_on_control_tuple() public {
+        _runScenario("control tuple", CONTROL_PUBLISHER, SHARED_SUBSCRIBER, CONTROL_PENDING);
+    }
+
+    function test_claim_releases_matching_deposit_on_extreme_tuple() public {
+        _runScenario("extreme tuple", EXTREME_PUBLISHER, SHARED_SUBSCRIBER, EXTREME_PENDING);
+    }
+
+    function _runScenario(string memory label, address publisher, address subscriber, uint256 expectedPending) internal {
+        uint256 attackerNativeBefore = ATTACKER.balance;
+
+        Snapshot memory publisherBefore = _snapshot(publisher);
+        Snapshot memory subscriberBefore = _snapshot(subscriber);
+        (bool exist, bool approved, uint128 units, uint256 pendingBefore) =
+            IDA.getSubscription(MATICX_ADDR, publisher, INDEX_ID, subscriber);
+
+        console.log("");
+        console.log("[scenario]");
+        console.log(label);
+        console.log("publisher:", publisher);
+        console.log("subscriber:", subscriber);
+        console.log("indexId:", INDEX_ID);
+        console.log("units:", uint256(units));
+        console.log("pending before:", pendingBefore);
+        _logSnapshot("publisher before", publisherBefore);
+        _logSnapshot("subscriber before", subscriberBefore);
+
+        assertTrue(exist, "subscription must exist on live fork");
+        assertFalse(approved, "subscription must stay unapproved before claim");
+        assertEq(pendingBefore, expectedPending, "unexpected pending distribution for selected tuple");
+        assertTrue(publisherBefore.availableBalance >= 0, "publisher available balance should start non-negative");
+        assertEq(
+            uint256(publisherBefore.availableBalance),
+            publisherBefore.erc20Balance,
+            "balanceOf should match non-negative realtime balance before claim"
+        );
+        assertGe(
+            publisherBefore.deposit,
+            pendingBefore,
+            "publisher deposit must at least cover the pending claim before settlement"
+        );
+
+        vm.prank(ATTACKER);
+        _hostCall(abi.encodeCall(IDA.claim, (MATICX_ADDR, publisher, INDEX_ID, subscriber, new bytes(0))));
+
+        Snapshot memory publisherAfter = _snapshot(publisher);
+        Snapshot memory subscriberAfter = _snapshot(subscriber);
+        (, bool approvedAfter,, uint256 pendingAfter) = IDA.getSubscription(MATICX_ADDR, publisher, INDEX_ID, subscriber);
+
+        uint256 subscriberDelta = subscriberAfter.erc20Balance - subscriberBefore.erc20Balance;
+
+        console.log("pending after :", pendingAfter);
+        _logSnapshot("publisher after", publisherAfter);
+        _logSnapshot("subscriber after", subscriberAfter);
+        console.log("subscriber delta:", subscriberDelta);
+        console.log("attacker native before:", attackerNativeBefore);
+        console.log("attacker native after :", ATTACKER.balance);
+
+        assertFalse(approvedAfter, "claim should not silently approve the subscription");
+        assertEq(pendingAfter, 0, "claim should fully materialize the pending distribution");
+        assertEq(subscriberDelta, pendingBefore, "subscriber should receive exactly the pending distribution");
+
+        assertGe(publisherBefore.deposit, publisherAfter.deposit, "publisher deposit must not increase on claim");
+        assertEq(
+            publisherBefore.deposit - publisherAfter.deposit,
+            pendingBefore,
+            "claim should release deposit matching the subscriber payout"
+        );
+
+        assertTrue(publisherAfter.availableBalance >= 0, "publisher should remain non-negative after claim");
+        assertEq(
+            uint256(publisherAfter.availableBalance),
+            publisherAfter.erc20Balance,
+            "balanceOf should match non-negative realtime balance after claim"
+        );
+        assertEq(
+            uint256(publisherAfter.availableBalance),
+            uint256(publisherBefore.availableBalance),
+            "publisher spendable balance should stay unchanged because deposit release offsets the debit"
+        );
+        assertEq(
+            publisherAfter.erc20Balance,
+            publisherBefore.erc20Balance,
+            "publisher ERC20-visible balance should remain unchanged after claim"
+        );
+        assertEq(ATTACKER.balance, attackerNativeBefore, "Attempt29 is diagnostic only and should not change attacker native");
+    }
+
+    function _hostCall(bytes memory callData) internal {
+        HOST.callAgreement(IDA, callData, new bytes(0));
+    }
+
+    function _snapshot(address account) internal view returns (Snapshot memory snap) {
+        (snap.availableBalance, snap.deposit, snap.owedDeposit, snap.timestamp) = MATICX.realtimeBalanceOfNow(account);
+        snap.erc20Balance = MATICX.balanceOf(account);
+    }
+
+    function _logSnapshot(string memory label, Snapshot memory snap) internal pure {
+        console.log(label);
+        console.logInt(snap.availableBalance);
+        console.log("  deposit:", snap.deposit);
+        console.log("  owedDeposit:", snap.owedDeposit);
+        console.log("  timestamp:", snap.timestamp);
+        console.log("  balanceOf:", snap.erc20Balance);
+    }
+}

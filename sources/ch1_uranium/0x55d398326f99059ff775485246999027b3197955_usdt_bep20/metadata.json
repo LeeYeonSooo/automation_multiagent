@@ -1,0 +1,21 @@
+{
+  "label": "USDT_BEP20",
+  "address": "0x55d398326f99059fF775485246999027B3197955",
+  "chain": "bsc",
+  "chain_id": 56,
+  "contract_name": "BEP20USDT",
+  "compiler_version": "v0.5.16+commit.9c3226ce",
+  "compiler_type": "solc",
+  "optimizer_enabled": true,
+  "optimizer_runs": 200,
+  "evm_version": "Default",
+  "libraries": {},
+  "license_type": "Apache-2.0",
+  "proxy": false,
+  "proxy_implementation": null,
+  "verified": true,
+  "source_layout": "single_file",
+  "source_files": [
+    "BEP20USDT.sol"
+  ]
+}

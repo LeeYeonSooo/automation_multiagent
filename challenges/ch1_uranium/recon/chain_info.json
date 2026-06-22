@@ -1,0 +1,11 @@
+{
+  "chain_id": 2399,
+  "block_number": 6919826,
+  "block_number_hex": "0x699692",
+  "block_timestamp": 1619496182,
+  "block_timestamp_utc": "2021-04-27T04:03:02Z",
+  "gas_limit": 40407317,
+  "native_token": "BNB",
+  "rpc_env_var": "RPC_CH1_URANIUM",
+  "notes": "Isolated BSC mainnet fork. Chain ID differs from mainnet (56). Uranium router 0x80C8DD39Fe0a93d2290dA3a18d5226F04FC0B60D has no deployed code at this fork block."
+}

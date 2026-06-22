@@ -1,0 +1,47 @@
+# Foundry project template for Assignment C challenge folders.
+#
+# Usage:
+#   cp templates/foundry.toml.template challenges/<chN>/foundry.toml
+#   Then `forge install foundry-rs/forge-std` inside the challenge folder,
+#   or symlink a shared lib/forge-std from the repo root.
+#
+# remappings.txt guidance:
+#   Each challenge folder should also have a `remappings.txt` with at least:
+#     forge-std/=lib/forge-std/src/
+#     reference/=../../reference/       # so superfluid challenges can `import "reference/ContextUtils.sol";`
+#   Add protocol-specific remappings per-challenge as needed (keep them minimal — AGENTS.md §7).
+#
+# Codex: uncomment fork_block_number below (or set per-test via vm.createSelectFork)
+# once recon has fixed the exact block from `analysis.md`.
+
+[profile.default]
+src = "exploit"
+test = "poc"
+out = "out"
+cache_path = "cache"
+solc_version = "0.8.23"
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+fs_permissions = [{ access = "read-write", path = "./" }]
+# {CODEX:} optionally pin fork_block_number per-challenge; see analysis.md
+# fork_block_number = 0
+
+[rpc_endpoints]
+ch1 = "${RPC_CH1_URANIUM}"
+ch2 = "${RPC_CH2_HARVEST}"
+ch3 = "${RPC_CH3_FEIRARI}"
+ch4 = "${RPC_CH4_SUPERFLUID}"
+ch5 = "${RPC_CH5_SUPERFLUID_V2}"
+# Alias matching the fork block you want to pin (keeps test files short).
+bsc      = "${RPC_CH1_URANIUM}"
+mainnet  = "${RPC_CH3_FEIRARI}"
+polygon  = "${RPC_CH4_SUPERFLUID}"
+
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing = true
+
+[fuzz]
+runs = 32

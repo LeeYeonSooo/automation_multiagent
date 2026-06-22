@@ -1,0 +1,26 @@
+# Foundry config for ch4_superfluid
+# Generated from templates/foundry.toml.template (2026-04-18)
+
+[profile.default]
+src = "exploit"
+test = "poc"
+out = "out"
+cache_path = "cache"
+solc_version = "0.8.23"
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+fs_permissions = [{ access = "read-write", path = "./" }]
+fork_block_number = 24684668
+
+[rpc_endpoints]
+ch4 = "${RPC_CH4_SUPERFLUID}"
+# Chain-name alias for convenience matching reference/IDAUsage_t.sol style:
+polygon = "${RPC_CH4_SUPERFLUID}"
+
+[fmt]
+line_length = 120
+tab_width = 4
+
+[fuzz]
+runs = 32

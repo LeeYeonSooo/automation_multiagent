@@ -1,0 +1,23 @@
+{
+  "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+  "label": "usdc_polygon",
+  "chain": "polygon",
+  "chain_id": 137,
+  "contract_name": "UChildERC20Proxy",
+  "compiler_version": "v0.6.12+commit.27d51765",
+  "optimization_used": "1",
+  "runs": "200",
+  "constructor_arguments": "000000000000000000000000dd9185db084f5c4fff3b4f70e7ba62123b812226",
+  "evm_version": "Default",
+  "license_type": "None",
+  "proxy": "1",
+  "implementation": "0xdd9185db084f5c4fff3b4f70e7ba62123b812226",
+  "swarm_source": "ipfs://696f7ae6f368606e2fb937629b8621028df4794f0d256c4f4b869fbe6350edcb",
+  "similar_match": "",
+  "contract_file_name": null,
+  "source_format": "single-file",
+  "source_files": [
+    "UChildERC20Proxy.sol"
+  ],
+  "note": null
+}

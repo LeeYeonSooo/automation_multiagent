@@ -1,0 +1,30 @@
+{
+  "address": "0xdF5e0e81Dff6FAF3A7e52BA697820c5e32D806A8",
+  "address_lower": "0xdf5e0e81dff6faf3a7e52ba697820c5e32d806a8",
+  "label": "yCRV_Curve_pool_Vyper",
+  "chain": "ethereum",
+  "chain_id": 1,
+  "requested": true,
+  "discovered_via": null,
+  "verified": true,
+  "contract_name": "Vyper_contract",
+  "compiler_version": "vyper:0.1.0b16",
+  "optimizer_enabled": false,
+  "optimizer_runs": 0,
+  "evm_version": "petersburg",
+  "libraries": [],
+  "libraries_raw": "",
+  "license_type": "None",
+  "proxy": false,
+  "proxy_implementation": null,
+  "constructor_arguments": "",
+  "source_format": "vyper_raw",
+  "source_file_count": 1,
+  "source_files": [
+    "src/yCRV_Curve_pool_Vyper.vy"
+  ],
+  "abi_verified": true,
+  "fetched_at_utc": "2026-04-18T04:13:33.440687+00:00",
+  "swarm_source": "",
+  "similar_match": "0x9fc689ccada600b6df723d9e47d84d76664a1f23"
+}
